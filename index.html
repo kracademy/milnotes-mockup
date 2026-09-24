@@ -56,7 +56,9 @@
 
   /* mockup ribbon */
   .ribbon{background:var(--gold);color:#1B1208;font:600 12.5px/1.4 var(--sans);letter-spacing:.02em;text-align:center;padding:7px var(--gutter)}
-  .ribbon button{font:inherit;background:#1B1208;color:var(--gold-2);border:0;border-radius:999px;padding:3px 12px;margin-left:10px;cursor:pointer}
+  .ribbon b{font-weight:700}
+  .ribbon .sep{opacity:.5;margin-inline:6px}
+  .ribbon .soft{font-weight:500;opacity:.75}
 
   /* utility bar */
   .util{border-bottom:1px solid var(--line);font-size:13px;color:var(--text-dim)}
@@ -360,10 +362,6 @@
   .wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.6)}
   .wa svg{width:28px;height:28px}
 
-  /* redesign notes */
-  .note{display:none;position:relative;margin-block:14px;max-width:560px;background:#FFF6D6;color:#3A2A00;border:1px dashed #B88A1E;border-radius:8px;padding:10px 14px 10px 44px;font:500 13.5px/1.45 var(--sans)}
-  .note::before{content:attr(data-n);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:#B88A1E;color:#fff;font:700 12px/22px var(--sans);text-align:center}
-  .notes-on .note{display:block}
 
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -374,8 +372,7 @@
 <body>
 
 <div class="ribbon" role="note">
-  Mockup de redisseny · proposta no oficial per a Milnotes
-  <button type="button" id="notesToggle" aria-pressed="false">Mostra les notes del redisseny</button>
+  Proposta de nova web per a Milnotes <span class="sep">·</span> Concepte i disseny de <b>Marc Vizuete</b> <span class="sep">·</span> <span class="soft">Mockup no oficial</span>
 </div>
 
 <div class="util">
@@ -430,7 +427,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost" href="#cartellera">Veure totes les funcions</a>
         </div>
-        <p class="note" data-n="1">Portada amb <b>un sol espectacle destacat</b>, gran i amb data, lloc i botó de compra a la vista (com fa Cirque du Soleil). Ara la portada barreja tots els continguts alhora.</p>
       </div>
       <div class="poster hero-poster art-canco" aria-hidden="true">
         <span class="p-tag">Milnotes presenta</span>
@@ -460,7 +456,6 @@
         <button class="btn btn-dark" type="submit">Troba funcions</button>
         <div class="result" id="finderResult" aria-live="polite">Cercador ràpid d'entrades: tria espectacle i data i vés directe a la compra.</div>
       </form>
-      <p class="note" data-n="2">Cercador d'entrades just sota la portada: qui ve a comprar ho fa en dos clics, sense haver de buscar-ho pel menú.</p>
     </div>
   </div>
 
@@ -489,7 +484,6 @@
           <button type="button" id="next" aria-label="Següent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
         </div>
       </div>
-      <p class="note" data-n="3">Cada espectacle té la seva <b>fitxa igual</b>: cartell, gènere, propera data i dos botons (entrades / més info). Els cartells són il·lustracions provisionals: aquí hi aniria la foto o el cartell oficial de cada obra.</p>
     </div>
   </section>
 
@@ -530,7 +524,6 @@
           <div><ul><li>+7.000 peces</li><li>Època</li><li>Fantasia</li><li>Nadal</li></ul><span class="go">Demana cita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
       </div>
-      <p class="note" data-n="4">Les <b>quatre línies de negoci</b> separades i reconeixibles per color. Ara estan barrejades en menús i blocs de text; aquí cadascuna té la seva porta d'entrada.</p>
     </div>
   </section>
 
@@ -549,7 +542,6 @@
         <a class="course" href="#contacte"><span class="age">Casal</span><div><h3>Casal Milnotes</h3><p>Setmanes de teatre, jocs i vestuari durant les vacances.</p></div><span class="pill">Places limitades</span></a>
       </div>
     </div>
-    <div class="wrap"><p class="note" data-n="5">Inscripcions en una sola pantalla amb les tres opcions clares, en lloc de tres enllaços diferents al menú.</p></div>
   </section>
 
   <!-- EVENTS -->
@@ -604,7 +596,6 @@
         <div class="review"><div class="stars">★★★★★</div><div class="ph"><i></i><i></i><i></i></div><small>Ressenya real · casament</small></div>
         <div class="review"><div class="stars">★★★★★</div><div class="ph"><i></i><i></i><i></i></div><small>Ressenya real · festa infantil</small></div>
       </div>
-      <p class="note" data-n="6">Només tres ressenyes destacades (amb les reals de Google) en lloc d'una llista llarga de 12 que allarga la pàgina.</p>
     </div>
   </section>
 
@@ -619,7 +610,6 @@
         <p class="body">Milnotes és companyia, escola i espai escènic. Produïm espectacles de petit i gran format, formem noves generacions d'intèrprets i posem l'ofici del teatre al servei de celebracions i empreses.</p>
       </div>
     </div>
-    <div class="wrap"><p class="note" data-n="7">Frase i foto provisionals: caldria una cita real del Joan i una foto de l'equip.</p></div>
   </section>
 
   <!-- CONTACT -->
@@ -638,7 +628,6 @@
           <a class="btn btn-gold" href="https://wa.me/34683517720" target="_blank" rel="noopener">Escriu-nos per WhatsApp</a>
           <a class="btn btn-ghost" href="https://maps.google.com/?q=Carrer+de+la+Princesa+36+Granollers" target="_blank" rel="noopener">Com arribar-hi</a>
         </div>
-        <p class="note" data-n="8">Adreça, telèfon, horari i WhatsApp junts en un sol bloc. Suggeriment: un correu amb domini propi (p. ex. info@milnotes.com) dona més confiança que un Hotmail.</p>
       </div>
       <div class="map" aria-hidden="true">
         <div class="road" style="left:0;right:0;top:52%;height:14px;transform:rotate(-8deg)"></div>
@@ -669,7 +658,7 @@
       <div><h4>Contacte</h4><ul><li>c/ Princesa, 36, Granollers</li><li>683 517 720</li><li>milnotes@hotmail.com</li></ul></div>
     </div>
     <div class="bottom">
-      <span>© 2026 Milnotes Produccions · Mockup de redisseny</span>
+      <span>© 2026 Milnotes Produccions · Proposta de redisseny de Marc Vizuete</span>
       <nav aria-label="Legal"><a href="#">Avís legal</a><a href="#">Condicions de compra d'entrades</a><a href="#">Política de cookies</a><a href="#">Privacitat</a></nav>
     </div>
   </div>
@@ -745,13 +734,6 @@
   burger.addEventListener("click", function(){ var open = mnav.hidden; mnav.hidden = !open; burger.setAttribute("aria-expanded", String(open)); });
   mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ mnav.hidden = true; burger.setAttribute("aria-expanded","false"); }); });
 
-  // redesign notes
-  var nt = document.getElementById("notesToggle");
-  nt.addEventListener("click", function(){
-    var on = document.body.classList.toggle("notes-on");
-    nt.setAttribute("aria-pressed", String(on));
-    nt.textContent = on ? "Amaga les notes del redisseny" : "Mostra les notes del redisseny";
-  });
 })();
 </script>
 </body>
