@@ -71,16 +71,19 @@
   .logo{display:flex;align-items:baseline;gap:2px;font-family:var(--display);font-size:30px;font-weight:600;letter-spacing:-.01em;line-height:1}
   .logo i{font-style:italic;font-weight:500;color:var(--gold)}
   .logo small{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-left:10px;align-self:center}
-  nav.main{display:flex;gap:30px;font-weight:500;font-size:15px}
+  nav.main{display:flex;gap:clamp(18px,2.2vw,30px);font-weight:500;font-size:15px;white-space:nowrap}
   nav.main a{position:relative;padding-block:6px;color:var(--text-dim);transition:color .2s}
   nav.main a:hover{color:var(--text)}
   nav.main a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s}
   nav.main a:hover::after{transform:scaleX(1)}
+  .logo,.head-cta{flex-shrink:0}
+  .logo small{white-space:nowrap}
+  @media (max-width: 1320px){ .logo small{display:none} }
   .head-cta{display:flex;align-items:center;gap:12px}
   .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:999px;width:44px;height:44px;cursor:pointer}
   .burger svg{width:20px;height:20px}
   .mobile-nav{display:none}
-  @media (max-width: 1020px){
+  @media (max-width: 1080px){
     nav.main{display:none}
     .burger{display:inline-grid;place-items:center}
     .mobile-nav{display:block;border-top:1px solid var(--line)}
