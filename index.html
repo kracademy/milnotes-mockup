@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Mockup de redisseny (proposta no oficial) de la web de Milnotes Produccions.">
+<title>Milnotes Redisseny</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --ink:#15101A;        /* platea fosca */
+    --ink-2:#211927;
+    --ink-3:#2E2434;
+    --velvet:#6B1121;     /* teló de vellut */
+    --velvet-2:#8E1C30;
+    --gold:#D3A24C;       /* pa d'or de l'escenari */
+    --gold-2:#F0CF8A;
+    --paper:#F5F1EB;      /* programa de mà */
+    --paper-2:#EAE3D8;
+    --text:#F6F1EA;
+    --text-dim:#BDB2BF;
+    --text-dark:#1D1621;
+    --text-dark-dim:#665B69;
+    --line:rgba(246,241,234,.14);
+    --line-dark:rgba(29,22,33,.14);
+    --display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+    --sans:"Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --gutter:clamp(16px, 4vw, 40px);
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--text);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;text-wrap:balance}
+  p{margin:0}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+  .eyebrow{font:600 12px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+  :focus-visible{outline:2px solid var(--gold-2);outline-offset:3px;border-radius:4px}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:.6em;font:600 15px/1 var(--sans);padding:15px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .2s, background .2s, color .2s, border-color .2s;white-space:nowrap}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-gold{background:var(--gold);color:#1B1208}
+  .btn-gold:hover{background:var(--gold-2)}
+  .btn-ghost{border-color:rgba(246,241,234,.4);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--text);background:rgba(246,241,234,.06)}
+  .btn-dark{background:var(--text-dark);color:var(--paper)}
+  .btn-dark:hover{background:var(--velvet)}
+  .btn svg{width:16px;height:16px}
+
+  /* mockup ribbon */
+  .ribbon{background:var(--gold);color:#1B1208;font:600 12.5px/1.4 var(--sans);letter-spacing:.02em;text-align:center;padding:7px var(--gutter)}
+  .ribbon button{font:inherit;background:#1B1208;color:var(--gold-2);border:0;border-radius:999px;padding:3px 12px;margin-left:10px;cursor:pointer}
+
+  /* utility bar */
+  .util{border-bottom:1px solid var(--line);font-size:13px;color:var(--text-dim)}
+  .util .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:8px;flex-wrap:wrap}
+  .util .lang{display:flex;gap:10px}
+  .util .lang a[aria-current]{color:var(--text);font-weight:600}
+  .util .contact-mini{display:flex;gap:20px;flex-wrap:wrap}
+
+  /* header */
+  header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(21,16,26,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
+  .logo{display:flex;align-items:baseline;gap:2px;font-family:var(--display);font-size:30px;font-weight:600;letter-spacing:-.01em;line-height:1}
+  .logo i{font-style:italic;font-weight:500;color:var(--gold)}
+  .logo small{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-left:10px;align-self:center}
+  nav.main{display:flex;gap:30px;font-weight:500;font-size:15px}
+  nav.main a{position:relative;padding-block:6px;color:var(--text-dim);transition:color .2s}
+  nav.main a:hover{color:var(--text)}
+  nav.main a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+  nav.main a:hover::after{transform:scaleX(1)}
+  .head-cta{display:flex;align-items:center;gap:12px}
+  .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:999px;width:44px;height:44px;cursor:pointer}
+  .burger svg{width:20px;height:20px}
+  .mobile-nav{display:none}
+  @media (max-width: 1020px){
+    nav.main{display:none}
+    .burger{display:inline-grid;place-items:center}
+    .mobile-nav{display:block;border-top:1px solid var(--line)}
+    .mobile-nav[hidden]{display:none!important}
+    .mobile-nav a{display:block;padding:14px var(--gutter);border-bottom:1px solid var(--line);font-family:var(--display);font-size:22px}
+    .logo small{display:none}
+  }
+  @media (max-width: 520px){
+    .head-cta .btn{padding:12px 16px;font-size:14px}
+    .util .contact-mini span:nth-child(2){display:none}
+  }
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;isolation:isolate;
+    background:
+      radial-gradient(60% 80% at 72% 18%, rgba(240,207,138,.30), transparent 60%),
+      repeating-linear-gradient(90deg, rgba(0,0,0,.42) 0 2px, rgba(255,255,255,.035) 38px, rgba(0,0,0,.42) 76px),
+      linear-gradient(180deg, var(--velvet-2), var(--velvet) 55%, var(--ink));
+  }
+  .hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:70%;height:140%;background:conic-gradient(from 200deg at 60% 0%, transparent 0 8deg, rgba(255,236,190,.16) 14deg 26deg, transparent 34deg);z-index:-1;animation:sway 12s ease-in-out infinite alternate;transform-origin:60% 0}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(transparent, var(--ink));z-index:-1}
+  @keyframes sway{from{transform:rotate(-4deg)}to{transform:rotate(5deg)}}
+  .hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,5vw,72px);align-items:end;padding-block:clamp(56px,9vw,120px) clamp(40px,6vw,72px)}
+  .hero .badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(240,207,138,.5);color:var(--gold-2);border-radius:999px;padding:7px 14px;font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+  .hero .badge svg{width:14px;height:14px}
+  .hero h1{font-size:clamp(3rem, 8.4vw, 7.4rem);font-weight:500;letter-spacing:-.025em;margin-top:22px}
+  .hero h1 em{font-style:italic;color:var(--gold-2);font-weight:400}
+  .hero .lede{max-width:52ch;margin-top:22px;font-size:clamp(16px,1.6vw,19px);color:#E7DCE0}
+  .hero .next{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px;padding-top:22px;border-top:1px solid rgba(246,241,234,.2);max-width:620px}
+  .hero .next div{display:grid;gap:4px}
+  .hero .next dt{font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim)}
+  .hero .next dd{margin:0;font-weight:600;font-size:16px}
+  .hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .hero-poster{max-width:100%;aspect-ratio:4/5;border-radius:6px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(240,207,138,.25);transform:rotate(1.5deg)}
+  @media (max-width: 820px){
+    .hero .wrap{grid-template-columns:1fr}
+    .hero-poster{max-width:320px;transform:none}
+  }
+
+  /* booking bar */
+  .finder{position:relative;z-index:2;margin-top:-6px}
+  .finder form{display:grid;grid-template-columns:1.4fr 1fr 1fr auto;gap:0;background:var(--paper);color:var(--text-dark);border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+  .finder label{display:grid;gap:4px;padding:14px 20px;border-right:1px solid var(--line-dark)}
+  .finder label span{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--text-dark-dim)}
+  .finder select{appearance:none;-webkit-appearance:none;border:0;background:transparent;font:600 16px/1.3 var(--sans);color:var(--text-dark);padding:0;cursor:pointer;color-scheme:light;min-width:0;width:100%}
+  .finder .btn{border-radius:0;padding-inline:32px;height:100%}
+  .finder .result{grid-column:1/-1;padding:10px 20px;font-size:14px;color:var(--text-dark-dim);background:var(--paper-2);border-top:1px solid var(--line-dark)}
+  @media (max-width: 820px){
+    .finder form{grid-template-columns:1fr 1fr}
+    .finder label:first-child{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--line-dark)}
+    .finder label:nth-child(3){border-right:0}
+    .finder .btn{grid-column:1/-1;justify-content:center;padding-block:18px}
+  }
+
+  /* section scaffolding */
+  section{padding-block:clamp(64px,9vw,120px)}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+  .sec-head h2{font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-.02em;margin-top:12px}
+  .sec-head h2 em{font-style:italic;color:var(--gold)}
+  .sec-head p{max-width:44ch;color:var(--text-dim)}
+  .light{background:var(--paper);color:var(--text-dark)}
+  .light .sec-head p{color:var(--text-dark-dim)}
+  .light .eyebrow{color:var(--velvet-2)}
+  .light .sec-head h2 em{color:var(--velvet-2)}
+
+  /* cartellera */
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{font:600 14px/1 var(--sans);padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s}
+  .chip:hover{color:var(--text);border-color:rgba(246,241,234,.4)}
+  .chip[aria-pressed="true"]{background:var(--text);color:var(--ink);border-color:var(--text)}
+  .rail-wrap{position:relative}
+  .rail{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(240px, 26vw, 300px);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin;scrollbar-color:var(--ink-3) transparent}
+  .rail::-webkit-scrollbar{height:6px}.rail::-webkit-scrollbar-thumb{background:var(--ink-3);border-radius:9px}
+  .card{scroll-snap-align:start;display:grid;gap:14px;align-content:start}
+  .card .poster{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .poster{transform:translateY(-6px)}
+  .card .meta{display:grid;gap:4px}
+  .card .when{font-size:13.5px;color:var(--gold-2);font-weight:600}
+  .card .when.tba{color:var(--text-dim);font-weight:500}
+  .card h3{font-size:24px;letter-spacing:-.01em}
+  .card p{font-size:14.5px;color:var(--text-dim)}
+  .card .links{display:flex;gap:16px;margin-top:6px;font-weight:600;font-size:14px}
+  .card .links a:first-child{color:var(--gold)}
+  .card .links a{border-bottom:1px solid transparent}
+  .card .links a:hover{border-color:currentColor}
+  .rail-nav{display:flex;gap:8px}
+  .rail-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;display:grid;place-items:center}
+  .rail-nav button:hover{border-color:var(--text)}
+  .rail-nav svg{width:18px;height:18px}
+  .empty{color:var(--text-dim);padding:40px 0}
+
+  /* posters (art made with CSS, to be swapped by real key art) */
+  .poster{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:18px;isolation:isolate;color:#fff}
+  .poster::before,.poster::after{content:"";position:absolute;z-index:-1}
+  .poster .p-tag{font:700 10.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;opacity:.9}
+  .poster .p-title{font-family:var(--display);font-size:clamp(26px,2.6vw,34px);line-height:.98;font-weight:600;letter-spacing:-.015em}
+  .poster .p-title i{font-weight:400}
+  .poster .p-foot{font:600 10.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-top:10px}
+  .hero-poster .p-title{font-size:clamp(34px,4vw,50px)}
+
+  .art-canco{background:linear-gradient(165deg,#9A2034 0%,#4A0B17 70%,#2A0710 100%)}
+  .art-canco::before{width:70%;aspect-ratio:1;border-radius:50%;right:-12%;top:12%;background:radial-gradient(circle,#F3D38E 0 45%,#D3A24C 46% 58%,transparent 59%)}
+  .art-canco::after{inset:auto -20% 18% -20%;height:26%;background:repeating-linear-gradient(-12deg,rgba(0,0,0,.35) 0 10px,transparent 10px 22px);transform:rotate(-8deg)}
+
+  .art-corte{background:linear-gradient(180deg,#E3A33A 0%,#C0712A 48%,#0F4B55 48.2%,#0A2F36 100%)}
+  .art-corte::before{left:14%;right:14%;top:22%;height:30%;background:#1B1208;clip-path:polygon(50% 0,100% 100%,0 100%);opacity:.85}
+  .art-corte::after{width:22%;aspect-ratio:1;border-radius:50%;right:12%;top:9%;background:#FBE7B0}
+
+  .art-manojo{background:linear-gradient(170deg,#D45B77,#7D1F46 60%,#3E0F2A)}
+  .art-manojo::before{inset:8% 8% 40% 8%;background:
+     radial-gradient(circle at 30% 45%,#F7B7C3 0 11%,transparent 12%),
+     radial-gradient(circle at 52% 32%,#FFD7DE 0 13%,transparent 14%),
+     radial-gradient(circle at 70% 50%,#F29AAE 0 12%,transparent 13%),
+     radial-gradient(circle at 48% 60%,#E7728C 0 12%,transparent 13%)}
+  .art-manojo::after{left:48%;width:3px;top:52%;bottom:20%;background:#2E6B45;box-shadow:-24px 6px 0 #2E6B45, 24px 4px 0 #2E6B45}
+
+  .art-moments{background:linear-gradient(180deg,#1C2C63,#0D1535)}
+  .art-moments::before{inset:0;background:repeating-radial-gradient(ellipse at 50% 115%, transparent 0 22px, rgba(211,162,76,.55) 23px 25px);}
+  .art-moments::after{left:50%;top:20%;width:36%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,240,205,.95),rgba(255,240,205,0) 70%)}
+
+  .art-mj{background:#0B0B0E}
+  .art-mj::before{left:50%;top:-10%;width:130%;height:100%;transform:translateX(-50%);background:conic-gradient(from 165deg at 50% 0%,transparent 0 8deg,rgba(255,255,255,.28) 14deg 16deg,transparent 22deg);}
+  .art-mj::after{left:50%;bottom:28%;width:22%;height:32%;transform:translateX(-50%);background:linear-gradient(#E8E8EE,#8D8D99);clip-path:polygon(40% 0,60% 0,64% 18%,82% 30%,70% 100%,56% 100%,50% 60%,44% 100%,30% 100%,18% 30%,36% 18%)}
+
+  .art-nadal{background:linear-gradient(170deg,#1F5540,#0E2E22)}
+  .art-nadal::before{inset:0;background:radial-gradient(circle,rgba(255,255,255,.8) 0 1.5px,transparent 2px) 0 0/22px 22px, radial-gradient(circle,rgba(255,255,255,.5) 0 1px,transparent 1.5px) 11px 11px/22px 22px}
+  .art-nadal::after{left:24%;right:24%;top:26%;height:34%;background:linear-gradient(90deg,#B3263A 0 48%,#7A1626 48% 52%,#C73A4E 52%);border-radius:3px 10px 10px 3px;box-shadow:0 0 0 4px #E6C27A}
+
+  .art-poty{background:linear-gradient(160deg,#FFD33D,#F5A524)}
+  .art-poty::before{width:55%;aspect-ratio:1;border-radius:50%;left:-8%;top:16%;background:#2BB5C8;box-shadow:120px 40px 0 -20px #EE5B8A}
+  .art-poty::after{width:26%;aspect-ratio:1;border-radius:50%;right:10%;top:10%;background:#fff;opacity:.85}
+  .art-poty{color:#241A00}
+
+  /* stats band */
+  .stats{padding-block:0;border-block:1px solid var(--line)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+  .stat{padding:40px 24px 40px 0;display:grid;gap:6px}
+  .stat + .stat{padding-left:28px;border-left:1px solid var(--line)}
+  .stat b{font-family:var(--display);font-weight:500;font-size:clamp(46px,6vw,76px);line-height:1;color:var(--gold);font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.02em}
+  .stat span{color:var(--text-dim);font-size:15px;max-width:28ch}
+  @media (max-width: 700px){
+    .stats .wrap{grid-template-columns:1fr}
+    .stat,.stat + .stat{padding:26px 0;border-left:0}
+    .stat + .stat{border-top:1px solid var(--line)}
+  }
+
+  /* pillars */
+  .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .pillar{position:relative;display:grid;align-content:space-between;gap:28px;min-height:340px;padding:clamp(24px,3vw,40px);border-radius:10px;overflow:hidden;isolation:isolate;color:var(--text);transition:transform .3s}
+  .pillar:hover{transform:translateY(-4px)}
+  .pillar h3{font-size:clamp(30px,3.4vw,44px);letter-spacing:-.02em}
+  .pillar h3 em{font-style:italic;font-weight:400}
+  .pillar p{color:rgba(246,241,234,.82);max-width:40ch;margin-top:12px}
+  .pillar ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .pillar li{font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14)}
+  .pillar .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;margin-top:16px}
+  .pillar .go svg{width:16px;height:16px;transition:transform .2s}
+  .pillar:hover .go svg{transform:translateX(4px)}
+  .pl-shows{background:linear-gradient(150deg,#8E1C30,#3E0914)}
+  .pl-school{background:linear-gradient(150deg,#2B3C6E,#141C3A)}
+  .pl-events{background:linear-gradient(150deg,#1F5A4B,#0D2A23)}
+  .pl-costume{background:linear-gradient(150deg,#7A5420,#34230D)}
+  .pillar::after{content:"";position:absolute;right:-60px;bottom:-60px;width:260px;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.18);box-shadow:0 0 0 30px rgba(255,255,255,.03),0 0 0 60px rgba(255,255,255,.025);z-index:-1}
+  @media (max-width: 760px){ .pillars{grid-template-columns:1fr} .pillar{min-height:0} }
+
+  /* school */
+  .school{background:
+      radial-gradient(70% 60% at 0% 0%, rgba(211,162,76,.18), transparent 60%),
+      var(--ink-2)}
+  .school .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:start}
+  .school h2{font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-.02em;margin-top:12px}
+  .school h2 em{font-style:italic;color:var(--gold-2);font-weight:400}
+  .school .intro p{color:var(--text-dim);margin-top:18px;max-width:46ch}
+  .school .intro .btn{margin-top:28px}
+  .courses{display:grid;gap:14px}
+  .course{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:22px 24px;border:1px solid var(--line);border-radius:10px;transition:background .2s,border-color .2s}
+  .course:hover{background:rgba(246,241,234,.04);border-color:rgba(240,207,138,.4)}
+  .course .age{font-family:var(--display);font-style:italic;font-size:30px;color:var(--gold);min-width:3.2ch}
+  .course h3{font-size:24px}
+  .course p{color:var(--text-dim);font-size:14.5px;margin-top:4px}
+  .course .pill{font:600 12px/1 var(--sans);padding:8px 12px;border-radius:999px;background:rgba(240,207,138,.14);color:var(--gold-2);white-space:nowrap}
+  @media (max-width: 860px){ .school .grid{grid-template-columns:1fr} }
+  @media (max-width: 520px){ .course{grid-template-columns:1fr} .course .pill{justify-self:start} }
+
+  /* events */
+  .events .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,72px)}
+  .events h2{font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-.02em;margin-top:12px}
+  .events h2 em{font-style:italic;color:var(--velvet-2);font-weight:400}
+  .events .intro p{color:var(--text-dark-dim);margin-top:18px;max-width:44ch}
+  .events .intro .btn{margin-top:28px}
+  .svc{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-dark)}
+  .svc a{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:20px 4px;border-bottom:1px solid var(--line-dark);transition:padding .25s, color .2s}
+  .svc a:hover{padding-left:14px;color:var(--velvet-2)}
+  .svc b{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.4vw,28px);letter-spacing:-.01em}
+  .svc span{display:block;font-size:14px;color:var(--text-dark-dim);margin-top:2px;font-family:var(--sans)}
+  .svc svg{width:20px;height:20px}
+  @media (max-width: 860px){ .events .grid{grid-template-columns:1fr} }
+
+  /* costume shop */
+  .costume .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:center}
+  .rack{position:relative;aspect-ratio:5/4;max-width:100%;border-radius:10px;background:linear-gradient(180deg,#2A2030,#1A131F);overflow:hidden;padding:9% 6% 0}
+  .rack::before{content:"";position:absolute;left:4%;right:4%;top:8%;height:5px;border-radius:3px;background:linear-gradient(90deg,#8C7A5A,#E0C58F,#8C7A5A)}
+  .rack .hangers{display:flex;gap:1.6%;height:100%;align-items:flex-start}
+  .rack .g{flex:1;border-radius:40% 40% 6px 6px / 12% 12% 6px 6px;position:relative;margin-top:4%}
+  .rack .g::before{content:"";position:absolute;left:50%;top:-12%;width:2px;height:12%;background:#B9A57E}
+  .costume h2{font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-.02em;margin-top:12px}
+  .costume h2 em{font-style:italic;color:var(--gold-2);font-weight:400}
+  .costume p{color:var(--text-dim);margin-top:18px;max-width:44ch}
+  .costume .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .costume .tags span{font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line)}
+  .costume .btn{margin-top:28px}
+  @media (max-width: 860px){ .costume .grid{grid-template-columns:1fr} }
+
+  /* reviews placeholder */
+  .reviews .row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .review{background:#fff;border:1px solid var(--line-dark);border-radius:10px;padding:26px;display:grid;gap:14px;align-content:start}
+  .review .stars{color:var(--gold);letter-spacing:3px;font-size:18px}
+  .review .ph{display:grid;gap:8px}
+  .review .ph i{display:block;height:10px;border-radius:5px;background:var(--paper-2)}
+  .review .ph i:nth-child(2){width:92%}.review .ph i:nth-child(3){width:70%}
+  .review small{font-size:13px;color:var(--text-dark-dim)}
+  .score{display:flex;align-items:center;gap:14px}
+  .score b{font-family:var(--display);font-size:48px;font-weight:500;line-height:1}
+  @media (max-width: 860px){ .reviews .row{grid-template-columns:1fr} }
+
+  /* about */
+  .about .grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+  .portrait{width:clamp(160px,22vw,260px);max-width:100%;aspect-ratio:3/4;border-radius:200px 200px 10px 10px;background:
+      radial-gradient(circle at 50% 36%, #3B2F40 0 17%, transparent 17.5%),
+      radial-gradient(ellipse at 50% 100%, #3B2F40 0 44%, transparent 44.5%),
+      linear-gradient(180deg,#6B1121,#2A0A12);border:1px solid rgba(240,207,138,.3)}
+  .about blockquote{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(26px,3.4vw,42px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+  .about .who{margin-top:22px;display:grid;gap:2px}
+  .about .who b{font-weight:600}
+  .about .who span{color:var(--text-dim);font-size:14.5px}
+  .about .body{color:var(--text-dim);margin-top:18px;max-width:62ch}
+  @media (max-width: 700px){ .about .grid{grid-template-columns:1fr} }
+
+  /* contact */
+  .contact{background:var(--ink-2)}
+  .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+  .contact h2{font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-.02em;margin-top:12px}
+  .contact dl{display:grid;grid-template-columns:auto 1fr;gap:18px 28px;margin:30px 0 0}
+  .contact dt{font:600 11px/1.9 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim)}
+  .contact dd{margin:0;font-size:17px}
+  .contact dd .sub{display:block;color:var(--text-dim);font-size:14.5px}
+  .contact .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .map{position:relative;min-height:360px;border-radius:10px;overflow:hidden;background:
+      linear-gradient(90deg, rgba(246,241,234,.05) 1px, transparent 1px) 0 0/42px 42px,
+      linear-gradient(0deg, rgba(246,241,234,.05) 1px, transparent 1px) 0 0/42px 42px,
+      #1C1522;border:1px solid var(--line)}
+  .map .road{position:absolute;background:rgba(246,241,234,.12)}
+  .map .pin{position:absolute;left:54%;top:46%;transform:translate(-50%,-100%);display:grid;justify-items:center;gap:8px}
+  .map .pin svg{width:42px;height:42px;color:var(--gold);filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
+  .map .pin span{background:var(--paper);color:var(--text-dark);font-weight:600;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap}
+  .map a{position:absolute;left:16px;bottom:16px}
+  @media (max-width: 860px){ .contact .grid{grid-template-columns:1fr} .map{min-height:280px} }
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding-block:56px 32px;font-size:14.5px;color:var(--text-dim)}
+  footer .top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+  footer h4{margin:0 0 14px;font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--text)}
+  footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  footer a:hover{color:var(--text)}
+  footer .social{display:flex;gap:10px;margin-top:20px}
+  footer .social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center}
+  footer .social a:hover{border-color:var(--gold);color:var(--gold)}
+  footer .social svg{width:18px;height:18px}
+  footer .bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:13px}
+  footer .bottom nav{display:flex;gap:18px;flex-wrap:wrap}
+  @media (max-width: 860px){ footer .top{grid-template-columns:1fr 1fr} footer .top > div:first-child{grid-column:1/-1} }
+
+  /* WhatsApp float */
+  .wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.6)}
+  .wa svg{width:28px;height:28px}
+
+  /* redesign notes */
+  .note{display:none;position:relative;margin-block:14px;max-width:560px;background:#FFF6D6;color:#3A2A00;border:1px dashed #B88A1E;border-radius:8px;padding:10px 14px 10px 44px;font:500 13.5px/1.45 var(--sans)}
+  .note::before{content:attr(data-n);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:#B88A1E;color:#fff;font:700 12px/22px var(--sans);text-align:center}
+  .notes-on .note{display:block}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="ribbon" role="note">
+  Mockup de redisseny · proposta no oficial per a Milnotes
+  <button type="button" id="notesToggle" aria-pressed="false">Mostra les notes del redisseny</button>
+</div>
+
+<div class="util">
+  <div class="wrap">
+    <div class="contact-mini"><span>Espai Milnotes · c/ Princesa, 36 · Granollers</span><span>683 517 720</span></div>
+    <div class="lang"><a href="#" aria-current="true">CA</a><a href="#">ES</a><a href="#">EN</a></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Milnotes, inici">mil<i>notes</i><small>Produccions · des del 2000</small></a>
+    <nav class="main" aria-label="Principal">
+      <a href="#cartellera">Espectacles</a>
+      <a href="#escola">Escola i casals</a>
+      <a href="#esdeveniments">Esdeveniments</a>
+      <a href="#sastreria">La Sastreria</a>
+      <a href="#qui-som">Qui som</a>
+      <a href="#contacte">Contacte</a>
+    </nav>
+    <div class="head-cta">
+      <a class="btn btn-gold" href="#cartellera">Compra entrades</a>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Obre el menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mnav" hidden aria-label="Menú mòbil">
+    <a href="#cartellera">Espectacles</a>
+    <a href="#escola">Escola i casals</a>
+    <a href="#esdeveniments">Esdeveniments</a>
+    <a href="#sastreria">La Sastreria</a>
+    <a href="#qui-som">Qui som</a>
+    <a href="#contacte">Contacte</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>Premi ZALEA 2026 · Millor sarsuela</span>
+        <h1>Cançó d'Amor<br><em>i de Guerra</em></h1>
+        <p class="lede">La sarsuela catalana per excel·lència torna a l'escenari amb la producció de Milnotes: orquestra, cor i un elenc que fa 25 anys que viu el teatre líric des de Granollers.</p>
+        <dl class="next">
+          <div><dt>Propera funció</dt><dd>Dg. 18 d'octubre · 18:00</dd></div>
+          <div><dt>On</dt><dd>Casino l'Aliança del Poblenou</dd></div>
+        </dl>
+        <div class="actions">
+          <a class="btn btn-gold" href="#cartellera">Compra entrades
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#cartellera">Veure totes les funcions</a>
+        </div>
+        <p class="note" data-n="1">Portada amb <b>un sol espectacle destacat</b>, gran i amb data, lloc i botó de compra a la vista (com fa Cirque du Soleil). Ara la portada barreja tots els continguts alhora.</p>
+      </div>
+      <div class="poster hero-poster art-canco" aria-hidden="true">
+        <span class="p-tag">Milnotes presenta</span>
+        <div><div class="p-title">Cançó d'Amor<br><i>i de Guerra</i></div><div class="p-foot">Sarsuela · Premi ZALEA 2026</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINDER -->
+  <div class="finder">
+    <div class="wrap">
+      <form id="finder" autocomplete="off">
+        <label for="f-show"><span>Espectacle</span>
+          <select id="f-show"></select></label>
+        <label for="f-type"><span>Per a qui</span>
+          <select id="f-type">
+            <option value="tots">Tots els públics</option>
+            <option value="familia">Famílies i infants</option>
+            <option value="adults">Adults</option>
+          </select></label>
+        <label for="f-month"><span>Quan</span>
+          <select id="f-month">
+            <option>Octubre 2026</option>
+            <option>Novembre 2026</option>
+            <option>Desembre 2026</option>
+          </select></label>
+        <button class="btn btn-dark" type="submit">Troba funcions</button>
+        <div class="result" id="finderResult" aria-live="polite">Cercador ràpid d'entrades: tria espectacle i data i vés directe a la compra.</div>
+      </form>
+      <p class="note" data-n="2">Cercador d'entrades just sota la portada: qui ve a comprar ho fa en dos clics, sense haver de buscar-ho pel menú.</p>
+    </div>
+  </div>
+
+  <!-- CARTELLERA -->
+  <section id="cartellera">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Cartellera 2026–27</span>
+          <h2>Espectacles <em>en gira</em></h2>
+        </div>
+        <div class="chips" role="group" aria-label="Filtra per gènere">
+          <button class="chip" type="button" data-f="tots" aria-pressed="true">Tots</button>
+          <button class="chip" type="button" data-f="sarsuela" aria-pressed="false">Sarsuela i òpera</button>
+          <button class="chip" type="button" data-f="musical" aria-pressed="false">Musicals</button>
+          <button class="chip" type="button" data-f="familia" aria-pressed="false">Família</button>
+        </div>
+      </div>
+      <div class="rail-wrap">
+        <div class="rail" id="rail" tabindex="0" aria-label="Espectacles"></div>
+      </div>
+      <div class="sec-head" style="margin:22px 0 0">
+        <p>Festival de Sarsuela al <b style="color:var(--text)">Teatre Apolo de Barcelona</b>: <i>La Corte de Faraón</i>, <i>Cançó d'Amor i de Guerra</i> i <i>La del Manojo de Rosas</i>.</p>
+        <div class="rail-nav">
+          <button type="button" id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button type="button" id="next" aria-label="Següent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <p class="note" data-n="3">Cada espectacle té la seva <b>fitxa igual</b>: cartell, gènere, propera data i dos botons (entrades / més info). Els cartells són il·lustracions provisionals: aquí hi aniria la foto o el cartell oficial de cada obra.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" aria-label="Milnotes en xifres">
+    <div class="wrap">
+      <div class="stat"><b>25</b><span>anys produint teatre, sarsuela i musicals (2000–2026)</span></div>
+      <div class="stat"><b>10</b><span>anys d'Escola de Teatre per a infants, joves i adults</span></div>
+      <div class="stat"><b>7.000</b><span>peces de vestuari teatral a La Sastreria</span></div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="light" aria-labelledby="pl-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Tot el que fem</span>
+          <h2 id="pl-h">Quatre maneres de <em>viure Milnotes</em></h2>
+        </div>
+        <p>Companyia, escola, espai d'esdeveniments i sastreria: tot sota el mateix teló, a Granollers.</p>
+      </div>
+      <div class="pillars">
+        <a class="pillar pl-shows" href="#cartellera">
+          <div><h3>Espectacles</h3><p>Produccions pròpies de petit i gran format: sarsuela, òpera, musicals i teatre familiar.</p></div>
+          <div><ul><li>Sarsuela</li><li>Òpera</li><li>Musicals</li><li>Nadal</li></ul><span class="go">Veure la cartellera <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="pillar pl-school" href="#escola">
+          <div><h3>Escola <em>i casals</em></h3><p>Aprendre teatre fent teatre. Grups per edats i casals de vacances.</p></div>
+          <div><ul><li>Adults</li><li>Menors de 18</li><li>Casal Milnotes</li></ul><span class="go">Inscripcions curs 2026–27 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="pillar pl-events" href="#esdeveniments">
+          <div><h3>Esdeveniments <em>a mida</em></h3><p>Celebracions, casaments i empreses, amb la posada en escena d'una companyia de teatre.</p></div>
+          <div><ul><li>Casaments</li><li>Aniversaris</li><li>Team building</li><li>Visites</li></ul><span class="go">Explica'ns la teva idea <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+        <a class="pillar pl-costume" href="#sastreria">
+          <div><h3>La <em>Sastreria</em></h3><p>Lloguer de vestuari teatral per a companyies, escoles, festes i rodatges.</p></div>
+          <div><ul><li>+7.000 peces</li><li>Època</li><li>Fantasia</li><li>Nadal</li></ul><span class="go">Demana cita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+      </div>
+      <p class="note" data-n="4">Les <b>quatre línies de negoci</b> separades i reconeixibles per color. Ara estan barrejades en menús i blocs de text; aquí cadascuna té la seva porta d'entrada.</p>
+    </div>
+  </section>
+
+  <!-- SCHOOL -->
+  <section class="school" id="escola">
+    <div class="wrap grid">
+      <div class="intro">
+        <span class="eyebrow">Escola de Teatre Milnotes</span>
+        <h2>Curs 2026–27: <em>puja a l'escenari</em></h2>
+        <p>Deu anys formant intèrprets a Granollers. Interpretació, cant i moviment amb professionals en actiu, i una mostra final sobre un escenari de debò.</p>
+        <a class="btn btn-gold" href="#contacte">Inscriu-t'hi</a>
+      </div>
+      <div class="courses">
+        <a class="course" href="#contacte"><span class="age">18+</span><div><h3>Escola d'adults</h3><p>Grups per nivells, per començar de zero o per tornar-hi.</p></div><span class="pill">Inscripció oberta</span></a>
+        <a class="course" href="#contacte"><span class="age">&lt;18</span><div><h3>Escola per a infants i joves</h3><p>Grups per franges d'edat durant tot el curs escolar.</p></div><span class="pill">Inscripció oberta</span></a>
+        <a class="course" href="#contacte"><span class="age">Casal</span><div><h3>Casal Milnotes</h3><p>Setmanes de teatre, jocs i vestuari durant les vacances.</p></div><span class="pill">Places limitades</span></a>
+      </div>
+    </div>
+    <div class="wrap"><p class="note" data-n="5">Inscripcions en una sola pantalla amb les tres opcions clares, en lloc de tres enllaços diferents al menú.</p></div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="light events" id="esdeveniments">
+    <div class="wrap grid">
+      <div class="intro">
+        <span class="eyebrow">Esdeveniments a mida</span>
+        <h2>El teu dia, <em>amb ofici de teatre</em></h2>
+        <p>Posem l'espai, l'escenografia, el vestuari i els actors. Tu només has de gaudir-ne. Des d'una festa d'aniversari fins a un casament o una jornada d'empresa.</p>
+        <a class="btn btn-dark" href="#contacte">Demana pressupost</a>
+      </div>
+      <ul class="svc">
+        <li><a href="#contacte"><div><b>Reserva l'espai per a celebracions</b><span>Aniversaris, comunions i festes privades</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#contacte"><div><b>Casa't amb nosaltres</b><span>Cerimònies amb posada en escena pròpia</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#contacte"><div><b>Team building</b><span>Dinàmiques teatrals per a equips d'empresa</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#contacte"><div><b>Visites personalitzades</b><span>Personatges que visiten casa teva o el teu esdeveniment</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#contacte"><div><b>Visites de personatges nadalencs</b><span>Patges, Pare Noel i Reis a domicili</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#contacte"><div><b>Creació, disseny i realització</b><span>Escenografia, atrezzo i producció per encàrrec</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="#contacte"><div><b>Lloguers varis</b><span>Material escènic, llum i so</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COSTUME SHOP -->
+  <section class="costume" id="sastreria">
+    <div class="wrap grid">
+      <div class="rack" aria-hidden="true">
+        <div class="hangers" id="hangers"></div>
+      </div>
+      <div>
+        <span class="eyebrow">Milnotes · La Sastreria</span>
+        <h2>Més de <em>7.000 peces</em> per vestir qualsevol història</h2>
+        <p>Vestuari d'època, de fantasia, de sarsuela i de Nadal, fet i mantingut per la companyia. Per a teatres, escoles, festes, carnaval i rodatges.</p>
+        <div class="tags"><span>Època</span><span>Sarsuela i òpera</span><span>Fantasia</span><span>Nadal</span><span>Carnaval</span></div>
+        <a class="btn btn-gold" href="#contacte">Demana cita a La Sastreria</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="light reviews" aria-labelledby="rv-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Ressenyes</span>
+          <h2 id="rv-h">El que diu <em>el públic</em></h2>
+        </div>
+        <div class="score"><b>★</b><span>Ressenyes de Google<br><small style="color:var(--text-dark-dim)">Aquí s'hi connectarien les ressenyes reals</small></span></div>
+      </div>
+      <div class="row">
+        <div class="review"><div class="stars">★★★★★</div><div class="ph"><i></i><i></i><i></i></div><small>Ressenya real · celebració d'aniversari</small></div>
+        <div class="review"><div class="stars">★★★★★</div><div class="ph"><i></i><i></i><i></i></div><small>Ressenya real · casament</small></div>
+        <div class="review"><div class="stars">★★★★★</div><div class="ph"><i></i><i></i><i></i></div><small>Ressenya real · festa infantil</small></div>
+      </div>
+      <p class="note" data-n="6">Només tres ressenyes destacades (amb les reals de Google) en lloc d'una llista llarga de 12 que allarga la pàgina.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="qui-som">
+    <div class="wrap grid">
+      <div class="portrait" role="img" aria-label="Espai per a la foto de Joan Garrido"></div>
+      <div>
+        <span class="eyebrow">Qui som</span>
+        <blockquote style="margin-top:14px">«Fem teatre per emocionar, i ho fem des de Granollers des de l'any 2000.»</blockquote>
+        <div class="who"><b>Joan Garrido</b><span>Director artístic de Milnotes</span></div>
+        <p class="body">Milnotes és companyia, escola i espai escènic. Produïm espectacles de petit i gran format, formem noves generacions d'intèrprets i posem l'ofici del teatre al servei de celebracions i empreses.</p>
+      </div>
+    </div>
+    <div class="wrap"><p class="note" data-n="7">Frase i foto provisionals: caldria una cita real del Joan i una foto de l'equip.</p></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contacte">
+    <div class="wrap grid">
+      <div>
+        <span class="eyebrow">Contacte</span>
+        <h2>Vine a l'Espai Milnotes</h2>
+        <dl>
+          <dt>Adreça</dt><dd>c/ Princesa, 36<span class="sub">08401 Granollers (Barcelona)</span></dd>
+          <dt>Telèfon</dt><dd>683 517 720<span class="sub">Joan Garrido</span></dd>
+          <dt>Correu</dt><dd>milnotes@hotmail.com</dd>
+          <dt>Horari</dt><dd>Dl.–dj. 10–13 h i 17–20 h<span class="sub">Dv. 10–14 h · altres hores amb cita prèvia</span></dd>
+        </dl>
+        <div class="actions">
+          <a class="btn btn-gold" href="https://wa.me/34683517720" target="_blank" rel="noopener">Escriu-nos per WhatsApp</a>
+          <a class="btn btn-ghost" href="https://maps.google.com/?q=Carrer+de+la+Princesa+36+Granollers" target="_blank" rel="noopener">Com arribar-hi</a>
+        </div>
+        <p class="note" data-n="8">Adreça, telèfon, horari i WhatsApp junts en un sol bloc. Suggeriment: un correu amb domini propi (p. ex. info@milnotes.com) dona més confiança que un Hotmail.</p>
+      </div>
+      <div class="map" aria-hidden="true">
+        <div class="road" style="left:0;right:0;top:52%;height:14px;transform:rotate(-8deg)"></div>
+        <div class="road" style="top:0;bottom:0;left:38%;width:10px;transform:rotate(12deg)"></div>
+        <div class="road" style="top:0;bottom:0;left:74%;width:8px;transform:rotate(-4deg)"></div>
+        <div class="road" style="left:0;right:0;top:22%;height:8px;transform:rotate(3deg)"></div>
+        <div class="pin"><span>Espai Milnotes</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="logo" href="#top">mil<i>notes</i></a>
+        <p style="margin-top:14px;max-width:34ch">Companyia i escola de teatre, esdeveniments i lloguer de vestuari. Granollers, des del 2000.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/espai_milnotes" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.youtube.com/@milnotesteatre8877" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/milnotes.teatre" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v7h4v-7h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg></a>
+          <a href="https://www.linkedin.com/company/milnotes" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 9h3v12H3zM9 9h3v1.7c.6-1 1.8-2 3.8-2 3.2 0 4.2 2 4.2 5.2V21h-3v-6.3c0-1.6-.3-3-2-3s-3 1.2-3 3.2V21H9z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Espectacles</h4><ul><li><a href="#cartellera">Cartellera</a></li><li><a href="#cartellera">Festival de Sarsuela</a></li><li><a href="#cartellera">Compra entrades</a></li></ul></div>
+      <div><h4>Milnotes</h4><ul><li><a href="#escola">Escola i casals</a></li><li><a href="#esdeveniments">Esdeveniments a mida</a></li><li><a href="#sastreria">La Sastreria</a></li><li><a href="#qui-som">Qui som</a></li></ul></div>
+      <div><h4>Contacte</h4><ul><li>c/ Princesa, 36, Granollers</li><li>683 517 720</li><li>milnotes@hotmail.com</li></ul></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Milnotes Produccions · Mockup de redisseny</span>
+      <nav aria-label="Legal"><a href="#">Avís legal</a><a href="#">Condicions de compra d'entrades</a><a href="#">Política de cookies</a><a href="#">Privacitat</a></nav>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34683517720" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
+
+<script>
+(function(){
+  var SHOWS = [
+    {id:"canco", t:"Cançó d'Amor", t2:"i de Guerra", cat:"sarsuela", tag:"Sarsuela · Premi ZALEA 2026", when:"Dg. 18 oct · 18:00 · Casino l'Aliança del Poblenou", d:"La sarsuela catalana de Martínez Valls, premiada com a millor sarsuela 2026."},
+    {id:"corte", t:"La Corte", t2:"de Faraón", cat:"sarsuela", tag:"Sarsuela · Festival Teatre Apolo", when:"", d:"L'opereta bíblica i picant de Vicente Lleó, amb tot l'humor del gènere ínfim."},
+    {id:"manojo", t:"La del Manojo", t2:"de Rosas", cat:"sarsuela", tag:"Sarsuela · Festival Teatre Apolo", when:"", d:"El sainet líric de Sorozábal: Madrid, amor i una floristeria de barri."},
+    {id:"moments", t:"Moments d'Òpera", t2:"i Sarsuela", cat:"sarsuela", tag:"Concert líric", when:"", d:"Un recorregut per les àries i romances més estimades del repertori."},
+    {id:"mj", t:"Michael Jackson", t2:"Privacy", cat:"musical", tag:"Musical · Tribut", when:"", d:"Un homenatge escènic al Rei del Pop, amb ball i música en directe."},
+    {id:"nadal", t:"El Gran Llibre", t2:"de Nadal", cat:"familia", tag:"Família · Nadal", when:"", d:"Un conte musical per obrir les festes amb tota la família."},
+    {id:"poty", t:"El Poty", t2:"& la Paty", cat:"familia", tag:"Família · Infantil", when:"", d:"L'espectacle per als més petits de la casa, per cantar i riure."}
+  ];
+
+  var rail = document.getElementById("rail");
+  var arrow = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  function render(f){
+    var list = SHOWS.filter(function(s){ return f==="tots" || s.cat===f; });
+    rail.innerHTML = list.map(function(s){
+      return '<article class="card">'+
+        '<a href="#cartellera" class="poster art-'+s.id+'" aria-hidden="true" tabindex="-1">'+
+          '<span class="p-tag">Milnotes</span>'+
+          '<div><div class="p-title">'+s.t+'<br><i>'+s.t2+'</i></div><div class="p-foot">'+s.tag.split(" · ")[0]+'</div></div>'+
+        '</a>'+
+        '<div class="meta">'+
+          '<span class="when'+(s.when?'':' tba')+'">'+(s.when||"Noves dates properament")+'</span>'+
+          '<h3>'+s.t+' '+s.t2+'</h3>'+
+          '<p>'+s.d+'</p>'+
+          '<div class="links"><a href="#cartellera">'+(s.when?'Entrades':'Avisa\'m')+' '+arrow+'</a><a href="#cartellera">Més info</a></div>'+
+        '</div></article>';
+    }).join("");
+    rail.scrollLeft = 0;
+  }
+  render("tots");
+
+  document.querySelectorAll(".chip").forEach(function(c){
+    c.addEventListener("click", function(){
+      document.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+      c.setAttribute("aria-pressed","true");
+      render(c.dataset.f);
+    });
+  });
+  function step(dir){ var card = rail.querySelector(".card"); var w = card ? card.getBoundingClientRect().width + 22 : 300; rail.scrollBy({left:dir*w, behavior:"smooth"}); }
+  document.getElementById("prev").addEventListener("click", function(){ step(-1); });
+  document.getElementById("next").addEventListener("click", function(){ step(1); });
+
+  // finder
+  var sel = document.getElementById("f-show");
+  sel.innerHTML = '<option value="">Tots els espectacles</option>' + SHOWS.map(function(s){ return '<option value="'+s.id+'">'+s.t+' '+s.t2+'</option>'; }).join("");
+  sel.value = "canco";
+  document.getElementById("finder").addEventListener("submit", function(e){
+    e.preventDefault();
+    var s = SHOWS.find(function(x){ return x.id===sel.value; });
+    var out = document.getElementById("finderResult");
+    if(s && s.when){ out.innerHTML = "<b>"+s.t+" "+s.t2+"</b> · "+s.when+" · a la web real, aquest botó portaria directament a la compra."; }
+    else if(s){ out.innerHTML = "<b>"+s.t+" "+s.t2+"</b> · encara sense dates anunciades. A la web real, aquí et podries apuntar per rebre l'avís."; }
+    else { out.innerHTML = "Pròxima funció: <b>Cançó d'Amor i de Guerra</b> · Dg. 18 oct · 18:00 · Casino l'Aliança del Poblenou."; }
+  });
+
+  // costume rack
+  var colors = ["#8E1C30","#D3A24C","#2B3C6E","#1F5A4B","#C8506A","#E8DCC4","#5B2A6E","#B3263A","#0F4B55","#7A5420","#D45B77","#2A2030"];
+  var hang = document.getElementById("hangers"), html = "";
+  for (var i=0;i<12;i++){ var h = 58 + ((i*37)%30); html += '<div class="g" style="background:linear-gradient(180deg,'+colors[i]+','+colors[i]+'cc);height:'+h+'%"></div>'; }
+  hang.innerHTML = html;
+
+  // mobile nav
+  var burger = document.getElementById("burger"), mnav = document.getElementById("mnav");
+  burger.addEventListener("click", function(){ var open = mnav.hidden; mnav.hidden = !open; burger.setAttribute("aria-expanded", String(open)); });
+  mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ mnav.hidden = true; burger.setAttribute("aria-expanded","false"); }); });
+
+  // redesign notes
+  var nt = document.getElementById("notesToggle");
+  nt.addEventListener("click", function(){
+    var on = document.body.classList.toggle("notes-on");
+    nt.setAttribute("aria-pressed", String(on));
+    nt.textContent = on ? "Amaga les notes del redisseny" : "Mostra les notes del redisseny";
+  });
+})();
+</script>
+</body>
+</html>
