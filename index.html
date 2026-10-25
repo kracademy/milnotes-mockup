@@ -170,12 +170,15 @@
   .fn-buy.off{border:1px dashed var(--line-dark);color:var(--text-dark-dim);cursor:default}
   .fn-empty{padding:18px 20px;color:var(--text-dark-dim)}
   @media (max-width: 820px){
-    .fn{grid-template-columns:52px minmax(0,1fr);gap:4px 12px;padding:10px 16px}
-    .fn-month{padding-inline:16px}
+    .fn{grid-template-columns:52px minmax(0,1fr) auto;gap:4px 10px;padding:9px 14px}
+    .fn-month{padding-inline:14px}
     .fn .fn-th{display:none}
-    .fn-cal{width:52px;height:52px;grid-row:span 3}
+    .fn-cal{width:52px;height:52px;grid-row:span 2;align-self:start}
+    .fn-main{grid-column:2 / -1}
     .fn-date{grid-column:2}
-    .finder .fn-buy{grid-column:2;justify-self:start;margin-top:4px;padding:9px 14px}
+    .fn-date b{font-size:13px}
+    .finder .fn-buy{grid-column:3;padding:8px 12px;font-size:12.5px}
+    .finder .fn-buy svg{display:none}
   }
 
   /* section scaffolding */
