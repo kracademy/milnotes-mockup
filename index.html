@@ -152,16 +152,14 @@
   }
 
   .fn-list{grid-column:1/-1;background:var(--paper);max-height:560px;overflow:auto}
-  .fn{display:grid;grid-template-columns:58px 92px minmax(0,1.5fr) minmax(0,1fr) 172px;gap:16px;align-items:center;padding:8px 20px;border-top:1px solid var(--line-dark)}
+  .fn{display:grid;grid-template-columns:58px 128px minmax(0,1.5fr) minmax(0,1fr) 172px;gap:16px;align-items:center;padding:8px 20px;border-top:1px solid var(--line-dark)}
   .fn-month{position:sticky;top:0;z-index:1;display:flex;align-items:baseline;gap:8px;padding:8px 20px;background:var(--paper-2);border-top:1px solid var(--line-dark);font:700 11.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--velvet-2)}
   .fn-month small{font-weight:600;color:var(--text-dark-dim);letter-spacing:.14em}
   .fn-cal{display:grid;justify-items:center;align-content:center;gap:2px;width:58px;height:58px;border-radius:8px;background:var(--ink);color:var(--paper);line-height:1}
   .fn-cal em{font:700 10.5px/1 var(--sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2)}
   .fn-cal b{font:600 25px/.95 var(--display);font-variant-numeric:lining-nums}
   .fn-cal small{font:600 10px/1 var(--sans);color:var(--text-dim)}
-  .fn-cal.range b{font-size:14px;font-family:var(--sans);font-weight:700}
-  .fn-cal.range small{font-size:9.5px}
-  .fn-th{width:92px;height:52px;border-radius:6px;object-fit:cover;display:grid;place-items:center;overflow:hidden}
+  .fn-th{width:128px;height:72px;border-radius:6px;object-fit:cover;display:grid;place-items:center;overflow:hidden}
   .fn-th i{font:italic 600 12px/1.1 var(--display);color:#fff;text-align:center;padding:4px}
   .fn-main b,.fn-date b{display:block;font-weight:600;font-size:14.5px;line-height:1.25}
   .fn-main b{font-family:var(--display);font-size:17px;font-weight:600}
@@ -882,7 +880,7 @@
     var a = d(s.start), b = d(s.last);
     if (s.start === s.last)
       return '<div class="fn-cal" aria-hidden="true"><em>'+MESC[a.getMonth()]+'</em><b>'+a.getDate()+'</b><small>'+DIES[a.getDay()]+'</small></div>';
-    return '<div class="fn-cal range" aria-hidden="true"><b>'+a.getDate()+' '+MESC[a.getMonth()]+'</b><small>fins al</small><b>'+b.getDate()+' '+MESC[b.getMonth()]+'</b></div>';
+    return '<div class="fn-cal" aria-hidden="true"><em>'+MESC[a.getMonth()]+'</em><b>'+a.getDate()+'</b><small>→ '+b.getDate()+' '+MESC[b.getMonth()]+'</small></div>';
   }
   function fwhen(s){
     var a = d(s.start), t = s.time ? s.time.replace(/^De (\S+) a (\S+)$/, "$1–$2")+" h" : "Hora per confirmar";
