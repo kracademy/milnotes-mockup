@@ -152,14 +152,14 @@
   }
 
   .fn-list{grid-column:1/-1;background:var(--paper);max-height:560px;overflow:auto}
-  .fn{display:grid;grid-template-columns:58px 128px minmax(0,1.5fr) minmax(0,1fr) 172px;gap:16px;align-items:center;padding:8px 20px;border-top:1px solid var(--line-dark)}
+  .fn{display:grid;grid-template-columns:58px 168px minmax(0,1.5fr) minmax(0,1fr) 172px;gap:16px;align-items:center;padding:8px 20px;border-top:1px solid var(--line-dark)}
   .fn-month{position:sticky;top:0;z-index:1;display:flex;align-items:baseline;gap:8px;padding:8px 20px;background:var(--paper-2);border-top:1px solid var(--line-dark);font:700 11.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--velvet-2)}
   .fn-month small{font-weight:600;color:var(--text-dark-dim);letter-spacing:.14em}
   .fn-cal{display:grid;justify-items:center;align-content:center;gap:2px;width:58px;height:58px;border-radius:8px;background:var(--ink);color:var(--paper);line-height:1}
   .fn-cal em{font:700 10.5px/1 var(--sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2)}
   .fn-cal b{font:600 25px/.95 var(--display);font-variant-numeric:lining-nums}
   .fn-cal small{font:600 10px/1 var(--sans);color:var(--text-dim)}
-  .fn-th{width:128px;height:72px;border-radius:6px;object-fit:cover;display:grid;place-items:center;overflow:hidden}
+  .fn-th{width:168px;height:94px;position:relative;border-radius:6px;object-fit:cover;display:grid;place-items:center;overflow:hidden}
   .fn-th i{font:italic 600 12px/1.1 var(--display);color:#fff;text-align:center;padding:4px}
   .fn-main b,.fn-date b{display:block;font-weight:600;font-size:14.5px;line-height:1.25}
   .fn-main b{font-family:var(--display);font-size:17px;font-weight:600}
@@ -255,7 +255,7 @@
   .poster.logo .p-tag{align-self:flex-start;background:rgba(21,16,26,.72);padding:7px 10px;border-radius:999px;color:#fff}
   .poster.logo .p-award{align-self:flex-start;display:inline-flex;gap:6px;align-items:center;background:var(--gold);color:#1B1208;font:700 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
   .fn-logo{box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
-  .fn-logo img{width:94%;height:90%;object-fit:contain}
+  .fn-logo img{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px);object-fit:contain;object-position:center}
 
   .art-mj{background:#0B0B0E}
   .art-mj::before{left:50%;top:-10%;width:130%;height:100%;transform:translateX(-50%);background:conic-gradient(from 165deg at 50% 0%,transparent 0 8deg,rgba(255,255,255,.28) 14deg 16deg,transparent 22deg);}
