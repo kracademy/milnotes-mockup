@@ -151,20 +151,31 @@
     .finder .btn{grid-column:1/-1;justify-content:center;padding-block:18px}
   }
 
-  .fn-list{grid-column:1/-1;background:var(--paper);max-height:520px;overflow:auto}
-  .fn{display:grid;grid-template-columns:176px 1.4fr 1.2fr 200px;gap:18px;align-items:center;padding:14px 20px;border-top:1px solid var(--line-dark)}
-  .fn-th{width:176px;height:100px;border-radius:6px;object-fit:cover;display:grid;place-items:center;overflow:hidden}
-  .fn-th i{font:italic 600 14px/1.1 var(--display);color:#fff;text-align:center;padding:4px}
-  .fn-main b,.fn-date b{display:block;font-weight:600;font-size:15.5px;line-height:1.3}
-  .fn-main b{font-family:var(--display);font-size:19px;font-weight:600}
-  .fn-main span,.fn-date span{display:flex;gap:5px;align-items:center;font-size:13.5px;color:var(--text-dark-dim);margin-top:3px}
-  .fn-buy{padding:12px 18px;font-size:14px;justify-content:center}
+  .fn-list{grid-column:1/-1;background:var(--paper);max-height:560px;overflow:auto}
+  .fn{display:grid;grid-template-columns:58px 92px minmax(0,1.5fr) minmax(0,1fr) 172px;gap:16px;align-items:center;padding:8px 20px;border-top:1px solid var(--line-dark)}
+  .fn-month{position:sticky;top:0;z-index:1;display:flex;align-items:baseline;gap:8px;padding:8px 20px;background:var(--paper-2);border-top:1px solid var(--line-dark);font:700 11.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--velvet-2)}
+  .fn-month small{font-weight:600;color:var(--text-dark-dim);letter-spacing:.14em}
+  .fn-cal{display:grid;justify-items:center;align-content:center;gap:2px;width:58px;height:58px;border-radius:8px;background:var(--ink);color:var(--paper);line-height:1}
+  .fn-cal em{font:700 10.5px/1 var(--sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2)}
+  .fn-cal b{font:600 25px/.95 var(--display);font-variant-numeric:lining-nums}
+  .fn-cal small{font:600 10px/1 var(--sans);color:var(--text-dim)}
+  .fn-cal.range b{font-size:14px;font-family:var(--sans);font-weight:700}
+  .fn-cal.range small{font-size:9.5px}
+  .fn-th{width:92px;height:52px;border-radius:6px;object-fit:cover;display:grid;place-items:center;overflow:hidden}
+  .fn-th i{font:italic 600 12px/1.1 var(--display);color:#fff;text-align:center;padding:4px}
+  .fn-main b,.fn-date b{display:block;font-weight:600;font-size:14.5px;line-height:1.25}
+  .fn-main b{font-family:var(--display);font-size:17px;font-weight:600}
+  .fn-main span,.fn-date span{display:flex;gap:5px;align-items:center;font-size:13px;color:var(--text-dark-dim);margin-top:2px}
+  .finder .fn-buy{height:auto;border-radius:999px;padding:11px 16px;font-size:13.5px;justify-content:center;padding-inline:16px}
   .fn-buy.off{border:1px dashed var(--line-dark);color:var(--text-dark-dim);cursor:default}
   .fn-empty{padding:18px 20px;color:var(--text-dark-dim)}
   @media (max-width: 820px){
-    .fn{grid-template-columns:132px 1fr;gap:10px 14px}
+    .fn{grid-template-columns:52px minmax(0,1fr);gap:4px 12px;padding:10px 16px}
+    .fn-month{padding-inline:16px}
+    .fn .fn-th{display:none}
+    .fn-cal{width:52px;height:52px;grid-row:span 3}
     .fn-date{grid-column:2}
-    .fn-buy{grid-column:1/-1;justify-content:center}
+    .finder .fn-buy{grid-column:2;justify-self:start;margin-top:4px;padding:9px 14px}
   }
 
   /* section scaffolding */
@@ -244,38 +255,6 @@
   .poster.logo .p-award{align-self:flex-start;display:inline-flex;gap:6px;align-items:center;background:var(--gold);color:#1B1208;font:700 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
   .fn-logo{box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
   .fn-logo img{width:94%;height:90%;object-fit:contain}
-  @media (max-width:720px){.fn-th{width:132px;height:76px}}
-
-  /* cartellera compacta: targetes estretes, separades per mesos, amb la data com un calendari */
-  .rail{display:flex;gap:10px;align-items:stretch}
-  .card{flex:0 0 clamp(120px,9.3vw,140px);gap:8px;display:flex;flex-direction:column}
-  .card .poster,.poster.logo{aspect-ratio:3/4;padding:8px}
-  .poster.logo img{inset:22% 6% 16%;width:88%;height:62%}
-  .poster.logo .p-tag,.poster.logo .p-award{font-size:8.5px;padding:5px 7px;letter-spacing:.08em}
-  .card .meta{gap:6px;flex:1;display:flex;flex-direction:column}
-  .card h3{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .card p{display:none}
-  .card .where{font-size:12px;align-items:flex-start;line-height:1.3;color:var(--text-dim)}
-  .card .buyrow{margin-top:auto;padding-top:2px}
-  .card .buy{width:100%;justify-content:center;white-space:normal;text-align:center;padding:9px 8px;font-size:12px;line-height:1.15}
-  /* full de calendari */
-  .cal{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:var(--paper);color:var(--text-dark)}
-  .cal b{font:600 34px/.9 var(--display);letter-spacing:-.02em;font-variant-numeric:lining-nums}
-  .cal span{display:grid;gap:2px;line-height:1}
-  .cal em{font:700 13px/1 var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--velvet-2)}
-  .cal small{font:600 11px/1.1 var(--sans);color:var(--text-dark-dim)}
-  .cal.range{justify-content:space-between;gap:4px;padding:7px 10px}
-  .cal.range .r{display:grid;justify-items:center;gap:3px}
-  .cal.range b{font-size:26px}
-  .cal.range em{font-size:11px}
-  .cal.range i{font-style:normal;color:var(--text-dark-dim);font-size:13px}
-  .card .hour{font:600 12px/1.2 var(--sans);color:var(--gold-2)}
-  .card .hour.tba{color:var(--text-dim);font-weight:500}
-  /* separador de mes */
-  .month{flex:0 0 24px;display:flex;align-items:flex-start;justify-content:center;border-left:1px solid rgba(211,162,76,.45);scroll-snap-align:start}
-  .month span{writing-mode:vertical-rl;transform:rotate(180deg);font:700 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);white-space:nowrap;padding-bottom:4px}
-  .month span small{font-weight:500;color:var(--text-dim);letter-spacing:.18em;margin-right:8px}
-  .rail .month:first-child{border-left:0}
 
   .art-mj{background:#0B0B0E}
   .art-mj::before{left:50%;top:-10%;width:130%;height:100%;transform:translateX(-50%);background:conic-gradient(from 165deg at 50% 0%,transparent 0 8deg,rgba(255,255,255,.28) 14deg 16deg,transparent 22deg);}
@@ -804,8 +783,8 @@
   // last = últim dia de la funció (AAAA-MM-DD): l'endemà desapareix sola de la web.
   var ALL = [
     {id:"manojo", start:"2026-10-18", last:"2026-10-18", img:"show-manojo", logo:"logo-manojo", lt:"manojo", t:"La del Manojo", t2:"de Rosas", cat:"sarsuela", tag:"Sarsuela", date:"Dg. 18 d'octubre de 2026", time:"18:00", m:"2026-10", where:"Casino l'Aliança del Poblenou, Barcelona", url:ATR_MANOJO, d:"El sainet líric de Sorozábal, amb una estètica inspirada en els anys cinquanta."},
-    {id:"canco-esp", start:"2026-10-25", last:"2026-10-25", img:"show-canco", logo:"logo-canco", lt:"canco", t:"Cançó d'Amor", t2:"i de Guerra", cat:"sarsuela", tag:"Sarsuela", award:"ZALEA 2026", date:"Dg. 25 d'octubre de 2026", time:"", m:"2026-10", where:"Esparreguera", url:"", d:"La sarsuela catalana de Martínez Valls, Premi Nacional ZALEA a la millor producció de sarsuela 2026."},
-    {id:"canco-cor", start:"2026-11-29", last:"2026-11-29", img:"show-canco", logo:"logo-canco", lt:"canco", t:"Cançó d'Amor", t2:"i de Guerra", cat:"sarsuela", tag:"Sarsuela", award:"ZALEA 2026", date:"Dg. 29 de novembre de 2026", time:"18:00", m:"2026-11", where:"Auditori de Cornellà", url:ATR_CANCO_CORNELLA, d:"La sarsuela catalana de Martínez Valls, Premi Nacional ZALEA a la millor producció de sarsuela 2026."},
+    {id:"canco-esp", start:"2026-10-25", last:"2026-10-25", img:"show-canco", logo:"logo-canco", lt:"canco", t:"Cançó d'Amor", t2:"i de Guerra", cat:"sarsuela", tag:"Sarsuela", award:"Premi ZALEA 2026", date:"Dg. 25 d'octubre de 2026", time:"", m:"2026-10", where:"Esparreguera", url:"", d:"La sarsuela catalana de Martínez Valls, Premi Nacional ZALEA a la millor producció de sarsuela 2026."},
+    {id:"canco-cor", start:"2026-11-29", last:"2026-11-29", img:"show-canco", logo:"logo-canco", lt:"canco", t:"Cançó d'Amor", t2:"i de Guerra", cat:"sarsuela", tag:"Sarsuela", award:"Premi ZALEA 2026", date:"Dg. 29 de novembre de 2026", time:"18:00", m:"2026-11", where:"Auditori de Cornellà", url:ATR_CANCO_CORNELLA, d:"La sarsuela catalana de Martínez Valls, Premi Nacional ZALEA a la millor producció de sarsuela 2026."},
     {id:"parc", start:"2026-12-05", last:"2027-01-04", logo:"logo-parc", lt:"parc", t:"Parc Màgic", t2:"de Nadal i Reis", cat:"familia", tag:"Família · Nadal", date:"Del 5 de desembre de 2026 al 4 de gener de 2027", time:"De 15:30 a 22:00", m:"2026-12 2027-01", where:"Jardins de Can Puget, Manlleu", url:ONEBOX_PARC, d:"L'Aventura del Primer Tió i El Campament Reial: circuit teatralitzat, espectacles i màgia de Nadal."},
     {id:"africana", start:"2027-05-23", last:"2027-05-23", logo:"logo-africana", lt:"africana", t:"El dúo de", t2:"La Africana", cat:"sarsuela", tag:"Sarsuela", date:"Dg. 23 de maig de 2027", time:"", m:"2027-05", where:"Casino l'Aliança del Poblenou, Barcelona", url:"", d:"La sarsuela de Manuel Fernández Caballero, amb la companyia de Milnotes."},
     {id:"corte-ter", start:"2027-09-19", last:"2027-09-19", img:"show-corte", logo:"logo-corte", lt:"corte", t:"La Corte", t2:"de Faraón", cat:"sarsuela", tag:"Sarsuela", date:"Dg. 19 de setembre de 2027", time:"", m:"2027-09", where:"Terrassa", url:"", d:"L'opereta bíblica i picant de Vicente Lleó, amb tot l'humor del gènere ínfim."},
@@ -849,34 +828,18 @@
   var MESC = ["gen","febr","març","abr","maig","juny","jul","ag","set","oct","nov","des"];
   var DIES = ["dg.","dl.","dt.","dc.","dj.","dv.","ds."];
   function d(iso){ var p = iso.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
-  function cal(s){
-    var a = d(s.start), b = d(s.last);
-    if (s.start === s.last)
-      return '<div class="cal"><b>'+a.getDate()+'</b><span><em>'+MESC[a.getMonth()]+'</em><small>'+DIES[a.getDay()]+' · '+a.getFullYear()+'</small></span></div>';
-    return '<div class="cal range" title="Del '+a.getDate()+' '+MESC[a.getMonth()]+' al '+b.getDate()+' '+MESC[b.getMonth()]+' '+b.getFullYear()+'"><span class="r"><b>'+a.getDate()+'</b><em>'+MESC[a.getMonth()]+'</em></span><i>→</i><span class="r"><b>'+b.getDate()+'</b><em>'+MESC[b.getMonth()]+'</em></span></div>';
-  }
-  function hour(s){
-    if (!s.time) return '<span class="hour tba">Hora per confirmar</span>';
-    return '<span class="hour">'+s.time.replace(/^De (\S+) a (\S+)$/, "$1–$2")+' h</span>';
-  }
   function render(f){
     var list = SHOWS.filter(function(s){ return f==="tots" || s.cat===f; });
-    var lastM = "";
     rail.innerHTML = list.map(function(s){
       var buy = s.url
-        ? '<a class="buy" href="'+s.url+'" target="_blank" rel="noopener">Compra entrades</a>'
+        ? '<a class="buy" href="'+s.url+'" target="_blank" rel="noopener">Compra entrades '+arrow+'</a>'
         : '<span class="buy off">Entrades properament</span>';
-      var m = s.start.slice(0,7), head = "";
-      if (m !== lastM) {
-        var k = +m.slice(5,7)-1;
-        head = '<div class="month" aria-hidden="true"><span><small>'+m.slice(0,4)+'</small>'+MES[k]+'</span></div>';
-        lastM = m;
-      }
-      return head + '<article class="card">'+ poster(s) +
+      return '<article class="card">'+ poster(s) +
         '<div class="meta">'+
-          cal(s) + hour(s) +
+          '<span class="when">'+s.date+(s.time?' · '+s.time:'')+'</span>'+
           '<span class="where">'+pin+' '+s.where+'</span>'+
-          '<h3>'+s.t+' '+s.t2+' · '+s.date+'</h3>'+
+          '<h3>'+s.t+' '+s.t2+'</h3>'+
+          '<p>'+s.d+'</p>'+
           '<div class="buyrow">'+buy+'</div>'+
         '</div></article>';
     }).join("");
@@ -891,7 +854,7 @@
       render(c.dataset.f);
     });
   });
-  function step(dir){ var card = rail.querySelector(".card"); var w = card ? (card.getBoundingClientRect().width + 10) * 3 : 300; rail.scrollBy({left:dir*w, behavior:"smooth"}); }
+  function step(dir){ var card = rail.querySelector(".card"); var w = card ? card.getBoundingClientRect().width + 22 : 300; rail.scrollBy({left:dir*w, behavior:"smooth"}); }
   document.getElementById("prev").addEventListener("click", function(){ step(-1); });
   document.getElementById("next").addEventListener("click", function(){ step(1); });
 
@@ -911,17 +874,32 @@
     return s.img ? '<img class="fn-th" src="img/'+s.img+'.jpg" alt="" loading="lazy" decoding="async">'
                  : '<span class="fn-th art-'+(s.id==="parc"?"parc":"gen")+'"><i>'+s.t+'</i></span>';
   }
+  var DIESL = ["Diumenge","Dilluns","Dimarts","Dimecres","Dijous","Divendres","Dissabte"];
+  function fcal(s){
+    var a = d(s.start), b = d(s.last);
+    if (s.start === s.last)
+      return '<div class="fn-cal" aria-hidden="true"><em>'+MESC[a.getMonth()]+'</em><b>'+a.getDate()+'</b><small>'+DIES[a.getDay()]+'</small></div>';
+    return '<div class="fn-cal range" aria-hidden="true"><b>'+a.getDate()+' '+MESC[a.getMonth()]+'</b><small>fins al</small><b>'+b.getDate()+' '+MESC[b.getMonth()]+'</b></div>';
+  }
+  function fwhen(s){
+    var a = d(s.start), t = s.time ? s.time.replace(/^De (\S+) a (\S+)$/, "$1–$2")+" h" : "Hora per confirmar";
+    if (s.start === s.last) return '<b>'+DIESL[a.getDay()]+' '+s.date.replace(/^\S+ /,"").replace(/ de 20\d\d$/,"")+'</b><span>'+t+'</span>';
+    return '<b>'+s.date.replace(/ de 20\d\d/g,"")+'</b><span>'+t+'</span>';
+  }
   function list(){
     var n = sel.value, t = selT.value, m = selM.value;
     var L = SHOWS.filter(function(s){
       return (!n || (s.t+" "+s.t2)===n) && (t==="tots" || s.cat===t) && (!m || s.m.indexOf(m)>=0);
     });
+    var lastM = "";
     document.getElementById("fnList").innerHTML = L.length ? L.map(function(s){
       var buy = s.url ? '<a class="btn btn-gold fn-buy" href="'+s.url+'" target="_blank" rel="noopener">Compra entrades '+arrow+'</a>'
                       : '<span class="btn fn-buy off">Entrades properament</span>';
-      return '<div class="fn">'+thumb(s)+
+      var mm = s.start.slice(0,7), head = "";
+      if (mm !== lastM) { head = '<div class="fn-month">'+MES[+mm.slice(5,7)-1]+' <small>'+mm.slice(0,4)+'</small></div>'; lastM = mm; }
+      return head + '<div class="fn">'+fcal(s)+thumb(s)+
         '<div class="fn-main"><b>'+s.t+' '+s.t2+'</b><span>'+pin+' '+s.where+'</span></div>'+
-        '<div class="fn-date"><b>'+s.date+'</b><span>'+(s.time||'Hora per confirmar')+'</span></div>'+
+        '<div class="fn-date">'+fwhen(s)+'</div>'+
         buy +'</div>';
     }).join("") : '<p class="fn-empty">No hi ha funcions amb aquests filtres.</p>';
   }
