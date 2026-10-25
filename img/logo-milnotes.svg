@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 0 1676 548" role="img" aria-label="milnotes">
+  <g fill="currentColor">
+    <circle cx="420" cy="238" r="31"/>
+    <circle cx="500" cy="120" r="44"/>
+    <circle cx="663" cy="73" r="58"/>
+    <circle cx="860" cy="163" r="80"/>
+    <circle cx="936" cy="418" r="120"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 512V328M28 401.5A73.5 73.5 0 0 1 175 401.5V512M175 401.5A73.5 73.5 0 0 1 322 401.5V512"/>
+    <path d="M420 328V512"/>
+    <path d="M520 238V512"/>
+    <path d="M618 512V328M618 405A77 77 0 0 1 772 405V512"/>
+    <path d="M1135 258V512M1088 328H1182"/>
+    <path d="M1228 420H1406A90 90 0 1 0 1380 484"/>
+    <path d="M1622 372C1610 340 1580 328 1550 328C1505 328 1474 348 1474 374C1474 402 1502 412 1550 420C1600 428 1628 440 1628 468C1628 494 1596 512 1550 512C1515 512 1485 500 1474 470"/>
+  </g>
+</svg>

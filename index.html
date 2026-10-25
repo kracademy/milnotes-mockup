@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Mockup de redisseny (proposta no oficial) de la web de Milnotes Produccions.">
 <title>Milnotes Redisseny</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%2315101A%22/%3E%3Cg fill=%22%23F6F1EA%22%3E%3Ccircle cx=%2213%22 cy=%2236%22 r=%224%22/%3E%3Ccircle cx=%2221%22 cy=%2222%22 r=%225.5%22/%3E%3Ccircle cx=%2234%22 cy=%2215%22 r=%227%22/%3E%3Ccircle cx=%2247%22 cy=%2224%22 r=%228.5%22/%3E%3Ccircle cx=%2247%22 cy=%2244%22 r=%2211%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
@@ -70,9 +71,11 @@
   /* header */
   header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(21,16,26,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
-  .logo{display:flex;align-items:baseline;gap:2px;font-family:var(--display);font-size:30px;font-weight:600;letter-spacing:-.01em;line-height:1}
-  .logo i{font-style:italic;font-weight:500;color:var(--gold)}
-  .logo small{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-left:10px;align-self:center}
+  .logo{display:flex;align-items:center;gap:2px;line-height:1;color:var(--text)}
+  .logo .mn{height:36px;width:auto;display:block}
+  footer .logo .mn{height:32px}
+  @media (max-width: 520px){ .logo .mn{height:28px} }
+  .logo small{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-left:14px;padding-left:14px;border-left:1px solid var(--line);align-self:center}
   nav.main{display:flex;gap:clamp(18px,2.2vw,30px);font-weight:500;font-size:15px;white-space:nowrap}
   nav.main a{position:relative;padding-block:6px;color:var(--text-dim);transition:color .2s}
   nav.main a:hover{color:var(--text)}
@@ -111,7 +114,7 @@
   .hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,5vw,72px);align-items:end;padding-block:clamp(56px,9vw,120px) clamp(40px,6vw,72px)}
   .hero .badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(240,207,138,.5);color:var(--gold-2);border-radius:999px;padding:7px 14px;font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
   .hero .badge svg{width:14px;height:14px}
-  .hero h1{font-size:clamp(3rem, 8.4vw, 7.4rem);font-weight:500;letter-spacing:-.025em;margin-top:22px}
+  .hero h1{font-size:clamp(3rem, 7vw, 6.4rem);font-weight:500;letter-spacing:-.025em;margin-top:22px}
   .hero h1 em{font-style:italic;color:var(--gold-2);font-weight:400}
   .hero .lede{max-width:52ch;margin-top:22px;font-size:clamp(16px,1.6vw,19px);color:#E7DCE0}
   .hero .next{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px;padding-top:22px;border-top:1px solid rgba(246,241,234,.2);max-width:620px}
@@ -119,10 +122,20 @@
   .hero .next dt{font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim)}
   .hero .next dd{margin:0;font-weight:600;font-size:16px}
   .hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-  .hero-poster{max-width:100%;aspect-ratio:4/5;border-radius:6px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(240,207,138,.25);transform:rotate(1.5deg)}
+  /* hero photo: bleeds off the right edge, melts into the velvet on the left */
+  .hero-photo{position:absolute;inset:0 0 0 auto;width:min(58%,980px);z-index:-1;margin:0}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 40%;display:block;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%);mask-image:linear-gradient(90deg,transparent 0,#000 38%)}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,16,26,0) 55%,var(--ink) 100%),radial-gradient(120% 80% at 80% 30%,transparent 40%,rgba(21,16,26,.45))}
+  .hero-photo figcaption{position:absolute;right:var(--gutter);bottom:clamp(40px,6vw,72px);z-index:1;font:600 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:rgba(246,241,234,.72);text-align:right}
+  .hero .wrap{grid-template-columns:1fr;min-height:min(78vh,720px)}
+  .hero .wrap > div{max-width:720px}
+  .hero h1,.hero .lede,.hero .next{text-shadow:0 2px 24px rgba(21,16,26,.55)}
   @media (max-width: 820px){
-    .hero .wrap{grid-template-columns:1fr}
-    .hero-poster{max-width:320px;transform:none}
+    .hero-photo{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:4/3;margin-top:-8px}
+    .hero-photo img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%);mask-image:linear-gradient(180deg,transparent 0,#000 30%)}
+    .hero-photo figcaption{bottom:24px}
+    .hero .wrap{min-height:0;padding-bottom:8px}
   }
 
   /* booking bar */
@@ -138,6 +151,22 @@
     .finder label:first-child{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--line-dark)}
     .finder label:nth-child(3){border-right:0}
     .finder .btn{grid-column:1/-1;justify-content:center;padding-block:18px}
+  }
+
+  .fn-list{grid-column:1/-1;background:var(--paper);max-height:520px;overflow:auto}
+  .fn{display:grid;grid-template-columns:176px 1.4fr 1.2fr 200px;gap:18px;align-items:center;padding:14px 20px;border-top:1px solid var(--line-dark)}
+  .fn-th{width:176px;height:100px;border-radius:6px;object-fit:cover;display:grid;place-items:center;overflow:hidden}
+  .fn-th i{font:italic 600 14px/1.1 var(--display);color:#fff;text-align:center;padding:4px}
+  .fn-main b,.fn-date b{display:block;font-weight:600;font-size:15.5px;line-height:1.3}
+  .fn-main b{font-family:var(--display);font-size:19px;font-weight:600}
+  .fn-main span,.fn-date span{display:flex;gap:5px;align-items:center;font-size:13.5px;color:var(--text-dark-dim);margin-top:3px}
+  .fn-buy{padding:12px 18px;font-size:14px;justify-content:center}
+  .fn-buy.off{border:1px dashed var(--line-dark);color:var(--text-dark-dim);cursor:default}
+  .fn-empty{padding:18px 20px;color:var(--text-dark-dim)}
+  @media (max-width: 820px){
+    .fn{grid-template-columns:132px 1fr;gap:10px 14px}
+    .fn-date{grid-column:2}
+    .fn-buy{grid-column:1/-1;justify-content:center}
   }
 
   /* section scaffolding */
@@ -171,6 +200,12 @@
   .card .links a:first-child{color:var(--gold)}
   .card .links a{border-bottom:1px solid transparent}
   .card .links a:hover{border-color:currentColor}
+  .card .where{display:flex;gap:6px;align-items:center;font-size:14px;color:var(--text);font-weight:500}
+  .buyrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px}
+  .buy{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#1B1208;font:600 14px/1 var(--sans);padding:11px 16px;border-radius:999px;white-space:nowrap}
+  .buy:hover{background:var(--gold-2)}
+  .buy.off{background:transparent;color:var(--text-dim);border:1px dashed rgba(246,241,234,.35);cursor:default}
+  .art-gen{background:radial-gradient(120% 90% at 50% 110%,#8E1C30 0%,#4A0E1A 50%,#15101A 100%)}
   .rail-nav{display:flex;gap:8px}
   .rail-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;display:grid;place-items:center}
   .rail-nav button:hover{border-color:var(--text)}
@@ -184,48 +219,63 @@
   .poster .p-title{font-family:var(--display);font-size:clamp(26px,2.6vw,34px);line-height:.98;font-weight:600;letter-spacing:-.015em}
   .poster .p-title i{font-weight:400}
   .poster .p-foot{font:600 10.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-top:10px}
-  .hero-poster .p-title{font-size:clamp(34px,4vw,50px)}
 
-  .art-canco{background:linear-gradient(165deg,#9A2034 0%,#4A0B17 70%,#2A0710 100%)}
-  .art-canco::before{width:70%;aspect-ratio:1;border-radius:50%;right:-12%;top:12%;background:radial-gradient(circle,#F3D38E 0 45%,#D3A24C 46% 58%,transparent 59%)}
-  .art-canco::after{inset:auto -20% 18% -20%;height:26%;background:repeating-linear-gradient(-12deg,rgba(0,0,0,.35) 0 10px,transparent 10px 22px);transform:rotate(-8deg)}
+  /* photo posters on the cartellera cards */
+  .poster.photo{aspect-ratio:3/2;padding:14px;background:#0B0B0E;box-shadow:0 0 0 1px rgba(246,241,234,.08)}
+  .poster.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .poster.photo::after{inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,transparent 60%,rgba(0,0,0,.55))}
+  .card:hover .poster.photo img{transform:scale(1.045)}
+  .poster.photo .p-tag{align-self:flex-start;background:rgba(21,16,26,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px;border-radius:999px}
+  .poster.photo .p-award{align-self:flex-start;display:inline-flex;gap:6px;align-items:center;background:var(--gold);color:#1B1208;font:700 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
+  .rail{grid-auto-columns:clamp(260px, 30vw, 360px)}
+  .card .poster{aspect-ratio:3/2}
 
-  .art-corte{background:linear-gradient(180deg,#E3A33A 0%,#C0712A 48%,#0F4B55 48.2%,#0A2F36 100%)}
-  .art-corte::before{left:14%;right:14%;top:22%;height:30%;background:#1B1208;clip-path:polygon(50% 0,100% 100%,0 100%);opacity:.85}
-  .art-corte::after{width:22%;aspect-ratio:1;border-radius:50%;right:12%;top:9%;background:#FBE7B0}
 
-  .art-manojo{background:linear-gradient(170deg,#D45B77,#7D1F46 60%,#3E0F2A)}
-  .art-manojo::before{inset:8% 8% 40% 8%;background:
-     radial-gradient(circle at 30% 45%,#F7B7C3 0 11%,transparent 12%),
-     radial-gradient(circle at 52% 32%,#FFD7DE 0 13%,transparent 14%),
-     radial-gradient(circle at 70% 50%,#F29AAE 0 12%,transparent 13%),
-     radial-gradient(circle at 48% 60%,#E7728C 0 12%,transparent 13%)}
-  .art-manojo::after{left:48%;width:3px;top:52%;bottom:20%;background:#2E6B45;box-shadow:-24px 6px 0 #2E6B45, 24px 4px 0 #2E6B45}
-
-  .art-moments{background:linear-gradient(180deg,#1C2C63,#0D1535)}
-  .art-moments::before{inset:0;background:repeating-radial-gradient(ellipse at 50% 115%, transparent 0 22px, rgba(211,162,76,.55) 23px 25px);}
-  .art-moments::after{left:50%;top:20%;width:36%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,240,205,.95),rgba(255,240,205,0) 70%)}
+  /* logo posters: el logo de cada espectacle (substitueix la foto) */
+  .poster.logo{aspect-ratio:3/2;padding:14px;box-shadow:0 0 0 1px rgba(246,241,234,.08)}
+  .poster.logo img{position:absolute;inset:15% 5% 8%;width:90%;height:77%;object-fit:contain;z-index:-1;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .poster.logo img{transform:scale(1.04)}
+  /* fons de cada logo: un focus de llum sobre el color de l'espectacle */
+  .lt-canco{background:radial-gradient(75% 85% at 50% 42%,#5C6474 0%,#2A303B 55%,#0E1118 100%)}
+  .lt-corte{background:radial-gradient(75% 85% at 50% 42%,#16586A 0%,#0B3341 55%,#051620 100%)}
+  .lt-manojo{background:radial-gradient(75% 85% at 50% 42%,#1C3E4A 0%,#0D2129 55%,#060E13 100%)}
+  .lt-parc{background:radial-gradient(75% 85% at 50% 42%,#1E346E 0%,#101E44 55%,#060A1E 100%)}
+  .lt-africana{background:radial-gradient(75% 85% at 50% 42%,#7A4620 0%,#4A2810 55%,#1E0E06 100%)}
+  .poster.logo img,.fn-logo img{filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+  .poster.logo .p-tag{align-self:flex-start;background:rgba(21,16,26,.72);padding:7px 10px;border-radius:999px;color:#fff}
+  .poster.logo .p-award{align-self:flex-start;display:inline-flex;gap:6px;align-items:center;background:var(--gold);color:#1B1208;font:700 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px}
+  .fn-logo{box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+  .fn-logo img{width:94%;height:90%;object-fit:contain}
+  @media (max-width:720px){.fn-th{width:132px;height:76px}}
 
   .art-mj{background:#0B0B0E}
   .art-mj::before{left:50%;top:-10%;width:130%;height:100%;transform:translateX(-50%);background:conic-gradient(from 165deg at 50% 0%,transparent 0 8deg,rgba(255,255,255,.28) 14deg 16deg,transparent 22deg);}
   .art-mj::after{left:50%;bottom:28%;width:22%;height:32%;transform:translateX(-50%);background:linear-gradient(#E8E8EE,#8D8D99);clip-path:polygon(40% 0,60% 0,64% 18%,82% 30%,70% 100%,56% 100%,50% 60%,44% 100%,30% 100%,18% 30%,36% 18%)}
 
-  .art-nadal{background:linear-gradient(170deg,#1F5540,#0E2E22)}
-  .art-nadal::before{inset:0;background:radial-gradient(circle,rgba(255,255,255,.8) 0 1.5px,transparent 2px) 0 0/22px 22px, radial-gradient(circle,rgba(255,255,255,.5) 0 1px,transparent 1.5px) 11px 11px/22px 22px}
-  .art-nadal::after{left:24%;right:24%;top:26%;height:34%;background:linear-gradient(90deg,#B3263A 0 48%,#7A1626 48% 52%,#C73A4E 52%);border-radius:3px 10px 10px 3px;box-shadow:0 0 0 4px #E6C27A}
+  .art-parc{background:radial-gradient(120% 90% at 50% 110%,#3B2A6B 0%,#1A1440 45%,#0B0A22 100%)}
+  .art-parc::before{inset:0;background-image:radial-gradient(1.6px 1.6px at 12% 18%,#F0CF8A 50%,transparent 51%),radial-gradient(1.2px 1.2px at 32% 42%,#fff 50%,transparent 51%),radial-gradient(2px 2px at 58% 14%,#F0CF8A 50%,transparent 51%),radial-gradient(1.2px 1.2px at 78% 36%,#fff 50%,transparent 51%),radial-gradient(1.6px 1.6px at 88% 12%,#F0CF8A 50%,transparent 51%),radial-gradient(1.2px 1.2px at 46% 28%,#fff 50%,transparent 51%),radial-gradient(1.4px 1.4px at 22% 60%,#F0CF8A 50%,transparent 51%)}
+  .art-parc::after{left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,transparent,rgba(240,207,138,.18))}
 
-  .art-poty{background:linear-gradient(160deg,#FFD33D,#F5A524)}
-  .art-poty::before{width:55%;aspect-ratio:1;border-radius:50%;left:-8%;top:16%;background:#2BB5C8;box-shadow:120px 40px 0 -20px #EE5B8A}
-  .art-poty::after{width:26%;aspect-ratio:1;border-radius:50%;right:10%;top:10%;background:#fff;opacity:.85}
-  .art-poty{color:#241A00}
+  /* promo strip (venda d'entrades) */
+  .promo{background:linear-gradient(90deg,var(--velvet),var(--velvet-2));color:var(--text)}
+  .promo .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-block:12px}
+  .promo p{margin:0;font:500 14.5px/1.4 var(--sans)}
+  .promo p b{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:-.01em}
+  .promo .tag{display:inline-block;background:var(--gold);color:#1B1208;font:700 10.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:6px 9px;border-radius:999px;margin-right:10px;vertical-align:2px}
+  .promo .btn{padding-block:10px}
 
   /* stats band */
   .stats{padding-block:0;border-block:1px solid var(--line)}
-  .stats .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
   .stat{padding:40px 24px 40px 0;display:grid;gap:6px}
   .stat + .stat{padding-left:28px;border-left:1px solid var(--line)}
   .stat b{font-family:var(--display);font-weight:500;font-size:clamp(46px,6vw,76px);line-height:1;color:var(--gold);font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.02em}
   .stat span{color:var(--text-dim);font-size:15px;max-width:28ch}
+  @media (max-width: 1000px) and (min-width: 701px){
+    .stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3){padding-left:0;border-left:0}
+    .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  }
   @media (max-width: 700px){
     .stats .wrap{grid-template-columns:1fr}
     .stat,.stat + .stat{padding:26px 0;border-left:0}
@@ -244,12 +294,22 @@
   .pillar .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;margin-top:16px}
   .pillar .go svg{width:16px;height:16px;transition:transform .2s}
   .pillar:hover .go svg{transform:translateX(4px)}
-  .pl-shows{background:linear-gradient(150deg,#8E1C30,#3E0914)}
-  .pl-school{background:linear-gradient(150deg,#2B3C6E,#141C3A)}
-  .pl-events{background:linear-gradient(150deg,#1F5A4B,#0D2A23)}
-  .pl-costume{background:linear-gradient(150deg,#7A5420,#34230D)}
-  .pillar::after{content:"";position:absolute;right:-60px;bottom:-60px;width:260px;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.18);box-shadow:0 0 0 30px rgba(255,255,255,.03),0 0 0 60px rgba(255,255,255,.025);z-index:-1}
-  @media (max-width: 760px){ .pillars{grid-template-columns:1fr} .pillar{min-height:0} }
+  .pillar{min-height:440px;background:#15101A}
+  .pillar > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .pillar:hover > img{transform:scale(1.04)}
+  .pillar::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--tint) 0%,var(--tint) 20%,transparent 58%),linear-gradient(0deg,var(--tint) 0%,transparent 48%),rgba(21,16,26,.22)}
+  .pillar h3,.pillar p{text-shadow:0 1px 18px rgba(0,0,0,.6)}
+  .pl-shows{--tint:rgba(62,9,20,.92)}
+  .pl-school{--tint:rgba(20,28,58,.92)}
+  .pl-events{--tint:rgba(13,42,35,.92)}
+  .pl-costume{--tint:rgba(52,35,13,.92)}
+  .pillar li{background:rgba(21,16,26,.5)}
+  @media (max-width: 760px){ .pillars{grid-template-columns:1fr} .pillar{min-height:420px} }
+
+  /* framed editorial photos */
+  .shot{margin:0;position:relative;border-radius:10px;overflow:hidden;background:var(--ink-3)}
+  .shot img{display:block;width:100%;height:100%;object-fit:cover}
+  .shot figcaption{position:absolute;left:12px;bottom:12px;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(21,16,26,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px;border-radius:999px}
 
   /* school */
   .school{background:
@@ -267,6 +327,8 @@
   .course h3{font-size:24px}
   .course p{color:var(--text-dim);font-size:14.5px;margin-top:4px}
   .course .pill{font:600 12px/1 var(--sans);padding:8px 12px;border-radius:999px;background:rgba(240,207,138,.14);color:var(--gold-2);white-space:nowrap}
+  .school .shots{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:36px}
+  .school .shots .shot{aspect-ratio:4/3}
   @media (max-width: 860px){ .school .grid{grid-template-columns:1fr} }
   @media (max-width: 520px){ .course{grid-template-columns:1fr} .course .pill{justify-self:start} }
 
@@ -282,15 +344,16 @@
   .svc b{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.4vw,28px);letter-spacing:-.01em}
   .svc span{display:block;font-size:14px;color:var(--text-dark-dim);margin-top:2px;font-family:var(--sans)}
   .svc svg{width:20px;height:20px}
+  .events .shots{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-top:36px}
+  .events .shots .shot{aspect-ratio:3/4}
+  .events .shots .shot:first-child{aspect-ratio:auto}
   @media (max-width: 860px){ .events .grid{grid-template-columns:1fr} }
 
   /* costume shop */
   .costume .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:center}
-  .rack{position:relative;aspect-ratio:5/4;max-width:100%;border-radius:10px;background:linear-gradient(180deg,#2A2030,#1A131F);overflow:hidden;padding:9% 6% 0}
-  .rack::before{content:"";position:absolute;left:4%;right:4%;top:8%;height:5px;border-radius:3px;background:linear-gradient(90deg,#8C7A5A,#E0C58F,#8C7A5A)}
-  .rack .hangers{display:flex;gap:1.6%;height:100%;align-items:flex-start}
-  .rack .g{flex:1;border-radius:40% 40% 6px 6px / 12% 12% 6px 6px;position:relative;margin-top:4%}
-  .rack .g::before{content:"";position:absolute;left:50%;top:-12%;width:2px;height:12%;background:#B9A57E}
+  .wardrobe{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .wardrobe .shot{aspect-ratio:3/2;background:#E9E6E3}
+  @media (max-width: 420px){ .wardrobe{grid-template-columns:1fr} }
   .costume h2{font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:-.02em;margin-top:12px}
   .costume h2 em{font-style:italic;color:var(--gold-2);font-weight:400}
   .costume p{color:var(--text-dim);margin-top:18px;max-width:44ch}
@@ -312,11 +375,14 @@
   @media (max-width: 860px){ .reviews .row{grid-template-columns:1fr} }
 
   /* about */
-  .about .grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,64px);align-items:center}
-  .portrait{width:clamp(160px,22vw,260px);max-width:100%;aspect-ratio:3/4;border-radius:200px 200px 10px 10px;background:
-      radial-gradient(circle at 50% 36%, #3B2F40 0 17%, transparent 17.5%),
-      radial-gradient(ellipse at 50% 100%, #3B2F40 0 44%, transparent 44.5%),
-      linear-gradient(180deg,#6B1121,#2A0A12);border:1px solid rgba(240,207,138,.3)}
+  .about{padding-top:0}
+  .about .band{position:relative;margin:0;aspect-ratio:1440/530;max-height:620px;width:100%;overflow:hidden}
+  .about .band img{width:100%;height:100%;object-fit:cover;display:block}
+  .about .band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--ink) 0,rgba(21,16,26,0) 18%,rgba(21,16,26,0) 60%,var(--ink) 100%)}
+  .about .band figcaption{position:absolute;left:0;right:0;bottom:18px;z-index:1;text-align:center;font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:rgba(246,241,234,.75)}
+  .about .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,64px);align-items:center;margin-top:clamp(28px,4vw,48px)}
+  .about .grid .shot{aspect-ratio:1200/580}
+  @media (max-width: 700px){ .about .band{aspect-ratio:16/10} }
   .about blockquote{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(26px,3.4vw,42px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
   .about .who{margin-top:22px;display:grid;gap:2px}
   .about .who b{font-weight:600}
@@ -333,16 +399,13 @@
   .contact dd{margin:0;font-size:17px}
   .contact dd .sub{display:block;color:var(--text-dim);font-size:14.5px}
   .contact .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-  .map{position:relative;min-height:360px;border-radius:10px;overflow:hidden;background:
-      linear-gradient(90deg, rgba(246,241,234,.05) 1px, transparent 1px) 0 0/42px 42px,
-      linear-gradient(0deg, rgba(246,241,234,.05) 1px, transparent 1px) 0 0/42px 42px,
-      #1C1522;border:1px solid var(--line)}
-  .map .road{position:absolute;background:rgba(246,241,234,.12)}
-  .map .pin{position:absolute;left:54%;top:46%;transform:translate(-50%,-100%);display:grid;justify-items:center;gap:8px}
-  .map .pin svg{width:42px;height:42px;color:var(--gold);filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
-  .map .pin span{background:var(--paper);color:var(--text-dark);font-weight:600;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap}
-  .map a{position:absolute;left:16px;bottom:16px}
-  @media (max-width: 860px){ .contact .grid{grid-template-columns:1fr} .map{min-height:280px} }
+  .facade{position:relative;margin:0;align-self:center;border-radius:10px;overflow:hidden;aspect-ratio:1200/640;border:1px solid var(--line);background:var(--ink-3)}
+  .facade img{display:block;width:100%;height:100%;object-fit:cover}
+  .facade::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(21,16,26,.75))}
+  .facade .pin{position:absolute;left:16px;bottom:16px;z-index:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .facade .pin span{display:inline-flex;align-items:center;gap:8px;background:var(--paper);color:var(--text-dark);font-weight:600;font-size:13px;padding:8px 12px;border-radius:999px;white-space:nowrap}
+  .facade .pin svg{width:16px;height:16px;color:var(--velvet-2)}
+  @media (max-width: 860px){ .contact .grid{grid-template-columns:1fr} }
 
   /* footer */
   footer{border-top:1px solid var(--line);padding-block:56px 32px;font-size:14.5px;color:var(--text-dim)}
@@ -370,6 +433,22 @@
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mn-logo" viewBox="-8 0 1676 548"><g fill="currentColor">
+    <circle cx="420" cy="238" r="31"/>
+    <circle cx="500" cy="120" r="44"/>
+    <circle cx="663" cy="73" r="58"/>
+    <circle cx="860" cy="163" r="80"/>
+    <circle cx="936" cy="418" r="120"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 512V328M28 401.5A73.5 73.5 0 0 1 175 401.5V512M175 401.5A73.5 73.5 0 0 1 322 401.5V512"/>
+    <path d="M420 328V512"/>
+    <path d="M520 238V512"/>
+    <path d="M618 512V328M618 405A77 77 0 0 1 772 405V512"/>
+    <path d="M1135 258V512M1088 328H1182"/>
+    <path d="M1228 420H1406A90 90 0 1 0 1380 484"/>
+    <path d="M1622 372C1610 340 1580 328 1550 328C1505 328 1474 348 1474 374C1474 402 1502 412 1550 420C1600 428 1628 440 1628 468C1628 494 1596 512 1550 512C1515 512 1485 500 1474 470"/>
+  </g></symbol></svg>
 
 <div class="ribbon" role="note">
   Proposta de nova web per a Milnotes <span class="sep">·</span> Concepte i disseny de <b>Marc Vizuete</b> <span class="sep">·</span> <span class="soft">Mockup no oficial</span>
@@ -384,7 +463,7 @@
 
 <header class="site">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Milnotes, inici">mil<i>notes</i><small>Produccions · des del 2000</small></a>
+    <a class="logo" href="#top" aria-label="Milnotes, inici"><svg class="mn" viewBox="-8 0 1676 548" aria-hidden="true"><use href="#mn-logo"/></svg><small>Produccions · des del 2001</small></a>
     <nav class="main" aria-label="Principal">
       <a href="#cartellera">Espectacles</a>
       <a href="#escola">Escola i casals</a>
@@ -394,7 +473,7 @@
       <a href="#contacte">Contacte</a>
     </nav>
     <div class="head-cta">
-      <a class="btn btn-gold" href="#cartellera">Compra entrades</a>
+      <a class="btn btn-gold" href="https://tickets.oneboxtds.com/milnotes?hl=ca-ES" target="_blank" rel="noopener">Compra entrades</a>
       <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Obre el menú">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -410,17 +489,24 @@
   </nav>
 </header>
 
+<div class="promo" role="region" aria-label="Venda d'entrades">
+  <div class="wrap">
+    <p><span class="tag">Entrades a la venda</span><b>Parc Màgic de Nadal</b> · Jardins de Can Puget, Manlleu · del 5 de desembre al 4 de gener</p>
+    <a class="btn btn-gold" href="https://tickets.oneboxtds.com/milnotes/events/58854?hl=ca-ES" target="_blank" rel="noopener">Compra entrades
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div>
+
 <main id="top">
   <!-- HERO -->
   <div class="hero">
     <div class="wrap">
       <div>
-        <span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>Premi ZALEA 2026 · Millor sarsuela</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>Premi Nacional ZALEA 2026 · Millor sarsuela</span>
         <h1>Cançó d'Amor<br><em>i de Guerra</em></h1>
         <p class="lede">La sarsuela catalana per excel·lència torna a l'escenari amb la producció de Milnotes: orquestra, cor i un elenc que fa 25 anys que viu el teatre líric des de Granollers.</p>
-        <dl class="next">
-          <div><dt>Propera funció</dt><dd>Dg. 18 d'octubre · 18:00</dd></div>
-          <div><dt>On</dt><dd>Casino l'Aliança del Poblenou</dd></div>
+        <dl class="next" id="heroNext">
+          <div><dt>Propera funció</dt><dd>Dg. 29 de novembre · Auditori de Cornellà</dd></div>
         </dl>
         <div class="actions">
           <a class="btn btn-gold" href="#cartellera">Compra entrades
@@ -428,11 +514,11 @@
           <a class="btn btn-ghost" href="#cartellera">Veure totes les funcions</a>
         </div>
       </div>
-      <div class="poster hero-poster art-canco" aria-hidden="true">
-        <span class="p-tag">Milnotes presenta</span>
-        <div><div class="p-title">Cançó d'Amor<br><i>i de Guerra</i></div><div class="p-foot">Sarsuela · Premi ZALEA 2026</div></div>
-      </div>
     </div>
+    <figure class="hero-photo">
+      <img src="img/hero-canco.jpg" width="1500" height="1336" alt="L'elenc de Cançó d'Amor i de Guerra a l'escenari del Teatre Apolo" fetchpriority="high">
+      <figcaption>Cançó d'Amor i de Guerra<br>Teatre Apolo · Barcelona</figcaption>
+    </figure>
   </div>
 
   <!-- FINDER -->
@@ -445,16 +531,13 @@
           <select id="f-type">
             <option value="tots">Tots els públics</option>
             <option value="familia">Famílies i infants</option>
-            <option value="adults">Adults</option>
+            <option value="sarsuela">Sarsuela i òpera</option>
           </select></label>
         <label for="f-month"><span>Quan</span>
-          <select id="f-month">
-            <option>Octubre 2026</option>
-            <option>Novembre 2026</option>
-            <option>Desembre 2026</option>
-          </select></label>
+          <select id="f-month"><option value="">Tots els mesos</option></select></label>
         <button class="btn btn-dark" type="submit">Troba funcions</button>
-        <div class="result" id="finderResult" aria-live="polite">Cercador ràpid d'entrades: tria espectacle i data i vés directe a la compra.</div>
+        <div class="result" id="finderResult" aria-live="polite">Totes les funcions amb entrades a la venda. Filtra per espectacle, públic o mes.</div>
+        <div class="fn-list" id="fnList"></div>
       </form>
     </div>
   </div>
@@ -470,7 +553,6 @@
         <div class="chips" role="group" aria-label="Filtra per gènere">
           <button class="chip" type="button" data-f="tots" aria-pressed="true">Tots</button>
           <button class="chip" type="button" data-f="sarsuela" aria-pressed="false">Sarsuela i òpera</button>
-          <button class="chip" type="button" data-f="musical" aria-pressed="false">Musicals</button>
           <button class="chip" type="button" data-f="familia" aria-pressed="false">Família</button>
         </div>
       </div>
@@ -478,7 +560,7 @@
         <div class="rail" id="rail" tabindex="0" aria-label="Espectacles"></div>
       </div>
       <div class="sec-head" style="margin:22px 0 0">
-        <p>Festival de Sarsuela al <b style="color:var(--text)">Teatre Apolo de Barcelona</b>: <i>La Corte de Faraón</i>, <i>Cançó d'Amor i de Guerra</i> i <i>La del Manojo de Rosas</i>.</p>
+        <p>Totes les funcions amb entrades a la venda, per ordre de data. Cada botó porta directament a la compra d'entrades.</p>
         <div class="rail-nav">
           <button type="button" id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
           <button type="button" id="next" aria-label="Següent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -490,9 +572,10 @@
   <!-- STATS -->
   <section class="stats" aria-label="Milnotes en xifres">
     <div class="wrap">
-      <div class="stat"><b>25</b><span>anys produint teatre, sarsuela i musicals (2000–2026)</span></div>
-      <div class="stat"><b>10</b><span>anys d'Escola de Teatre per a infants, joves i adults</span></div>
-      <div class="stat"><b>7.000</b><span>peces de vestuari teatral a La Sastreria</span></div>
+      <div class="stat"><b>25</b><span>anys produint teatre, sarsuela i musicals (2001–2026)</span></div>
+      <div class="stat"><b>+40</b><span>espectacles produïts: sarsuela, òpera, musicals i teatre familiar</span></div>
+      <div class="stat"><b>12</b><span>anys d'Escola de Teatre per a infants, joves i adults (des del 2014)</span></div>
+      <div class="stat"><b>30.000</b><span>peces de vestuari teatral a La Sastreria</span></div>
     </div>
   </section>
 
@@ -508,20 +591,24 @@
       </div>
       <div class="pillars">
         <a class="pillar pl-shows" href="#cartellera">
+          <img src="img/pl-shows.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async">
           <div><h3>Espectacles</h3><p>Produccions pròpies de petit i gran format: sarsuela, òpera, musicals i teatre familiar.</p></div>
           <div><ul><li>Sarsuela</li><li>Òpera</li><li>Musicals</li><li>Nadal</li></ul><span class="go">Veure la cartellera <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
         <a class="pillar pl-school" href="#escola">
+          <img src="img/pl-school.jpg" width="1400" height="776" alt="" loading="lazy" decoding="async">
           <div><h3>Escola <em>i casals</em></h3><p>Aprendre teatre fent teatre. Grups per edats i casals de vacances.</p></div>
           <div><ul><li>Adults</li><li>Menors de 18</li><li>Casal Milnotes</li></ul><span class="go">Inscripcions curs 2026–27 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
         <a class="pillar pl-events" href="#esdeveniments">
+          <img src="img/pl-events.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async">
           <div><h3>Esdeveniments <em>a mida</em></h3><p>Celebracions, casaments i empreses, amb la posada en escena d'una companyia de teatre.</p></div>
           <div><ul><li>Casaments</li><li>Aniversaris</li><li>Team building</li><li>Visites</li></ul><span class="go">Explica'ns la teva idea <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
         <a class="pillar pl-costume" href="#sastreria">
+          <img src="img/pl-costume.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async">
           <div><h3>La <em>Sastreria</em></h3><p>Lloguer de vestuari teatral per a companyies, escoles, festes i rodatges.</p></div>
-          <div><ul><li>+7.000 peces</li><li>Època</li><li>Fantasia</li><li>Nadal</li></ul><span class="go">Demana cita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <div><ul><li>+30.000 peces</li><li>Època</li><li>Fantasia</li><li>Nadal</li></ul><span class="go">Demana cita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </a>
       </div>
     </div>
@@ -533,8 +620,12 @@
       <div class="intro">
         <span class="eyebrow">Escola de Teatre Milnotes</span>
         <h2>Curs 2026–27: <em>puja a l'escenari</em></h2>
-        <p>Deu anys formant intèrprets a Granollers. Interpretació, cant i moviment amb professionals en actiu, i una mostra final sobre un escenari de debò.</p>
+        <p>Dotze anys formant intèrprets a Granollers. Interpretació, cant i moviment amb professionals en actiu, i una mostra final sobre un escenari de debò.</p>
         <a class="btn btn-gold" href="#contacte">Inscriu-t'hi</a>
+        <div class="shots">
+          <figure class="shot"><img src="img/school-a.jpg" width="1392" height="774" alt="Alumnes de l'escola fent un exercici de moviment" loading="lazy" decoding="async"></figure>
+          <figure class="shot"><img src="img/school.jpg" width="1393" height="779" alt="Alumnes llegint el guió sobre l'escenari" loading="lazy" decoding="async"></figure>
+        </div>
       </div>
       <div class="courses">
         <a class="course" href="#contacte"><span class="age">18+</span><div><h3>Escola d'adults</h3><p>Grups per nivells, per començar de zero o per tornar-hi.</p></div><span class="pill">Inscripció oberta</span></a>
@@ -552,6 +643,10 @@
         <h2>El teu dia, <em>amb ofici de teatre</em></h2>
         <p>Posem l'espai, l'escenografia, el vestuari i els actors. Tu només has de gaudir-ne. Des d'una festa d'aniversari fins a un casament o una jornada d'empresa.</p>
         <a class="btn btn-dark" href="#contacte">Demana pressupost</a>
+        <div class="shots">
+          <figure class="shot"><img src="img/events.jpg" width="1400" height="933" alt="Personatge amb vestuari de plomes a l'entrada d'una celebració" loading="lazy" decoding="async"><figcaption>Celebracions</figcaption></figure>
+          <figure class="shot"><img src="img/events-2.jpg" width="1400" height="933" alt="Sessió de fotos amb actrius davant d'un teló vermell" loading="lazy" decoding="async"><figcaption>Empreses</figcaption></figure>
+        </div>
       </div>
       <ul class="svc">
         <li><a href="#contacte"><div><b>Reserva l'espai per a celebracions</b><span>Aniversaris, comunions i festes privades</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
@@ -568,12 +663,15 @@
   <!-- COSTUME SHOP -->
   <section class="costume" id="sastreria">
     <div class="wrap grid">
-      <div class="rack" aria-hidden="true">
-        <div class="hangers" id="hangers"></div>
+      <div class="wardrobe">
+        <figure class="shot"><img src="img/sast-nadal.jpg" width="1000" height="667" alt="Vestuari de Nadal: Rei Mag, Pare Noel i follet" loading="lazy" decoding="async"><figcaption>Nadal</figcaption></figure>
+        <figure class="shot"><img src="img/sast-medieval.jpg" width="1000" height="667" alt="Vestuari medieval" loading="lazy" decoding="async"><figcaption>Època</figcaption></figure>
+        <figure class="shot"><img src="img/sast-toreros.jpg" width="1000" height="667" alt="Vestits de flamenca i de torero" loading="lazy" decoding="async"><figcaption>Sarsuela</figcaption></figure>
+        <figure class="shot"><img src="img/sast-fantasia.jpg" width="1000" height="667" alt="Vestits de fantasia" loading="lazy" decoding="async"><figcaption>Fantasia</figcaption></figure>
       </div>
       <div>
         <span class="eyebrow">Milnotes · La Sastreria</span>
-        <h2>Més de <em>7.000 peces</em> per vestir qualsevol història</h2>
+        <h2>Més de <em>30.000 peces</em> per vestir qualsevol història</h2>
         <p>Vestuari d'època, de fantasia, de sarsuela i de Nadal, fet i mantingut per la companyia. Per a teatres, escoles, festes, carnaval i rodatges.</p>
         <div class="tags"><span>Època</span><span>Sarsuela i òpera</span><span>Fantasia</span><span>Nadal</span><span>Carnaval</span></div>
         <a class="btn btn-gold" href="#contacte">Demana cita a La Sastreria</a>
@@ -589,26 +687,30 @@
           <span class="eyebrow">Ressenyes</span>
           <h2 id="rv-h">El que diu <em>el públic</em></h2>
         </div>
-        <div class="score"><b>★</b><span>Ressenyes de Google<br><small style="color:var(--text-dark-dim)">Aquí s'hi connectarien les ressenyes reals</small></span></div>
+        <div class="score"><b>4,7</b><span>★★★★★ · 337 opinions a Google<br><small style="color:var(--text-dark-dim)">Premi Nacional ZALEA 2026 a la millor producció de sarsuela</small></span></div>
       </div>
       <div class="row">
-        <div class="review"><div class="stars">★★★★★</div><div class="ph"><i></i><i></i><i></i></div><small>Ressenya real · celebració d'aniversari</small></div>
-        <div class="review"><div class="stars">★★★★★</div><div class="ph"><i></i><i></i><i></i></div><small>Ressenya real · casament</small></div>
-        <div class="review"><div class="stars">★★★★★</div><div class="ph"><i></i><i></i><i></i></div><small>Ressenya real · festa infantil</small></div>
+        <div class="review"><div class="stars">★★★★★</div><p>«Siempre es un acierto ir a los espectáculos que organizan Milnotes!!!»</p><small>Opinió de Google</small></div>
+        <div class="review"><div class="stars">★★★★★</div><p>«Estamos muy contentos con la organización, grandes profesionales y muy atentos.»</p><small>Opinió de Google</small></div>
+        <div class="review"><div class="stars">★★★★★</div><p>«Una compañía extraordinaria, actuaciones estelares, músicos maravillosos.»</p><small>Opinió de Google</small></div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section class="about" id="qui-som">
+    <figure class="band">
+      <img src="img/about-elenc.jpg" width="1440" height="530" alt="Foto de família de l'elenc de Cançó d'Amor i de Guerra" loading="lazy" decoding="async">
+      <figcaption>L'elenc de Cançó d'Amor i de Guerra</figcaption>
+    </figure>
     <div class="wrap grid">
-      <div class="portrait" role="img" aria-label="Espai per a la foto de Joan Garrido"></div>
       <div>
         <span class="eyebrow">Qui som</span>
-        <blockquote style="margin-top:14px">«Fem teatre per emocionar, i ho fem des de Granollers des de l'any 2000.»</blockquote>
+        <blockquote style="margin-top:14px">«Fem teatre per emocionar, i ho fem des de Granollers des de l'any 2001.»</blockquote>
         <div class="who"><b>Joan Garrido</b><span>Director artístic de Milnotes</span></div>
         <p class="body">Milnotes és companyia, escola i espai escènic. Produïm espectacles de petit i gran format, formem noves generacions d'intèrprets i posem l'ofici del teatre al servei de celebracions i empreses.</p>
       </div>
+      <figure class="shot"><img src="img/about-orq.jpg" width="1200" height="580" alt="L'orquestra de Milnotes a l'escenari" loading="lazy" decoding="async"><figcaption>Orquestra en directe</figcaption></figure>
     </div>
   </section>
 
@@ -621,7 +723,7 @@
         <dl>
           <dt>Adreça</dt><dd>c/ Princesa, 36<span class="sub">08401 Granollers (Barcelona)</span></dd>
           <dt>Telèfon</dt><dd>683 517 720<span class="sub">Joan Garrido</span></dd>
-          <dt>Correu</dt><dd>milnotes@hotmail.com</dd>
+          <dt>Correu</dt><dd>comunicacio@milnotes.com</dd>
           <dt>Horari</dt><dd>Dl.–dj. 10–13 h i 17–20 h<span class="sub">Dv. 10–14 h · altres hores amb cita prèvia</span></dd>
         </dl>
         <div class="actions">
@@ -629,13 +731,10 @@
           <a class="btn btn-ghost" href="https://maps.google.com/?q=Carrer+de+la+Princesa+36+Granollers" target="_blank" rel="noopener">Com arribar-hi</a>
         </div>
       </div>
-      <div class="map" aria-hidden="true">
-        <div class="road" style="left:0;right:0;top:52%;height:14px;transform:rotate(-8deg)"></div>
-        <div class="road" style="top:0;bottom:0;left:38%;width:10px;transform:rotate(12deg)"></div>
-        <div class="road" style="top:0;bottom:0;left:74%;width:8px;transform:rotate(-4deg)"></div>
-        <div class="road" style="left:0;right:0;top:22%;height:8px;transform:rotate(3deg)"></div>
-        <div class="pin"><span>Espai Milnotes</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
-      </div>
+      <figure class="facade">
+        <img src="img/espai.jpg" width="1200" height="640" alt="Façana de l'Espai Milnotes al carrer Princesa de Granollers" loading="lazy" decoding="async">
+        <div class="pin"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Espai Milnotes · c/ Princesa, 36</span></div>
+      </figure>
     </div>
   </section>
 </main>
@@ -644,8 +743,8 @@
   <div class="wrap">
     <div class="top">
       <div>
-        <a class="logo" href="#top">mil<i>notes</i></a>
-        <p style="margin-top:14px;max-width:34ch">Companyia i escola de teatre, esdeveniments i lloguer de vestuari. Granollers, des del 2000.</p>
+        <a class="logo" href="#top" aria-label="Milnotes, inici"><svg class="mn" viewBox="-8 0 1676 548" aria-hidden="true"><use href="#mn-logo"/></svg></a>
+        <p style="margin-top:14px;max-width:34ch">Companyia i escola de teatre, esdeveniments i lloguer de vestuari. Granollers, des del 2001.</p>
         <div class="social">
           <a href="https://www.instagram.com/espai_milnotes" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
           <a href="https://www.youtube.com/@milnotesteatre8877" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
@@ -653,9 +752,9 @@
           <a href="https://www.linkedin.com/company/milnotes" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 9h3v12H3zM9 9h3v1.7c.6-1 1.8-2 3.8-2 3.2 0 4.2 2 4.2 5.2V21h-3v-6.3c0-1.6-.3-3-2-3s-3 1.2-3 3.2V21H9z"/></svg></a>
         </div>
       </div>
-      <div><h4>Espectacles</h4><ul><li><a href="#cartellera">Cartellera</a></li><li><a href="#cartellera">Festival de Sarsuela</a></li><li><a href="#cartellera">Compra entrades</a></li></ul></div>
+      <div><h4>Espectacles</h4><ul><li><a href="#cartellera">Cartellera</a></li><li><a href="#cartellera">Totes les funcions</a></li><li><a href="https://tickets.oneboxtds.com/milnotes?hl=ca-ES" target="_blank" rel="noopener">Compra entrades</a></li></ul></div>
       <div><h4>Milnotes</h4><ul><li><a href="#escola">Escola i casals</a></li><li><a href="#esdeveniments">Esdeveniments a mida</a></li><li><a href="#sastreria">La Sastreria</a></li><li><a href="#qui-som">Qui som</a></li></ul></div>
-      <div><h4>Contacte</h4><ul><li>c/ Princesa, 36, Granollers</li><li>683 517 720</li><li>milnotes@hotmail.com</li></ul></div>
+      <div><h4>Contacte</h4><ul><li>c/ Princesa, 36, Granollers</li><li>683 517 720</li><li>comunicacio@milnotes.com</li></ul></div>
     </div>
     <div class="bottom">
       <span>© 2026 Milnotes Produccions · Proposta de redisseny de Marc Vizuete</span>
@@ -668,31 +767,69 @@
 
 <script>
 (function(){
-  var SHOWS = [
-    {id:"canco", t:"Cançó d'Amor", t2:"i de Guerra", cat:"sarsuela", tag:"Sarsuela · Premi ZALEA 2026", when:"Dg. 18 oct · 18:00 · Casino l'Aliança del Poblenou", d:"La sarsuela catalana de Martínez Valls, premiada com a millor sarsuela 2026."},
-    {id:"corte", t:"La Corte", t2:"de Faraón", cat:"sarsuela", tag:"Sarsuela · Festival Teatre Apolo", when:"", d:"L'opereta bíblica i picant de Vicente Lleó, amb tot l'humor del gènere ínfim."},
-    {id:"manojo", t:"La del Manojo", t2:"de Rosas", cat:"sarsuela", tag:"Sarsuela · Festival Teatre Apolo", when:"", d:"El sainet líric de Sorozábal: Madrid, amor i una floristeria de barri."},
-    {id:"moments", t:"Moments d'Òpera", t2:"i Sarsuela", cat:"sarsuela", tag:"Concert líric", when:"", d:"Un recorregut per les àries i romances més estimades del repertori."},
-    {id:"mj", t:"Michael Jackson", t2:"Privacy", cat:"musical", tag:"Musical · Tribut", when:"", d:"Un homenatge escènic al Rei del Pop, amb ball i música en directe."},
-    {id:"nadal", t:"El Gran Llibre", t2:"de Nadal", cat:"familia", tag:"Família · Nadal", when:"", d:"Un conte musical per obrir les festes amb tota la família."},
-    {id:"poty", t:"El Poty", t2:"& la Paty", cat:"familia", tag:"Família · Infantil", when:"", d:"L'espectacle per als més petits de la casa, per cantar i riure."}
+  var TICKETS = "https://tickets.oneboxtds.com/milnotes?hl=ca-ES";
+  var ONEBOX_PARC = "https://tickets.oneboxtds.com/milnotes/events/58854?hl=ca-ES";
+  var ATR_MANOJO = "https://www.atrapalo.com/entradas/la-del-manojo-de-rosas_e4942928/";
+  var ATR_CANCO_CORNELLA = "https://www.atrapalo.com/entradas/can-o-d-amor-i-de-guerra_e4948936/";
+  // Una targeta per funció, per ordre de data. url = enllaç de compra (buit = entrades properament).
+  // last = últim dia de la funció (AAAA-MM-DD): l'endemà desapareix sola de la web.
+  var ALL = [
+    {id:"manojo", last:"2026-10-18", img:"show-manojo", logo:"logo-manojo", lt:"manojo", t:"La del Manojo", t2:"de Rosas", cat:"sarsuela", tag:"Sarsuela", date:"Dg. 18 d'octubre de 2026", time:"18:00", m:"2026-10", where:"Casino l'Aliança del Poblenou, Barcelona", url:ATR_MANOJO, d:"El sainet líric de Sorozábal, amb una estètica inspirada en els anys cinquanta."},
+    {id:"canco-esp", last:"2026-10-25", img:"show-canco", logo:"logo-canco", lt:"canco", t:"Cançó d'Amor", t2:"i de Guerra", cat:"sarsuela", tag:"Sarsuela", award:"Premi ZALEA 2026", date:"Dg. 25 d'octubre de 2026", time:"", m:"2026-10", where:"Esparreguera", url:"", d:"La sarsuela catalana de Martínez Valls, Premi Nacional ZALEA a la millor producció de sarsuela 2026."},
+    {id:"canco-cor", last:"2026-11-29", img:"show-canco", logo:"logo-canco", lt:"canco", t:"Cançó d'Amor", t2:"i de Guerra", cat:"sarsuela", tag:"Sarsuela", award:"Premi ZALEA 2026", date:"Dg. 29 de novembre de 2026", time:"18:00", m:"2026-11", where:"Auditori de Cornellà", url:ATR_CANCO_CORNELLA, d:"La sarsuela catalana de Martínez Valls, Premi Nacional ZALEA a la millor producció de sarsuela 2026."},
+    {id:"parc", last:"2027-01-04", logo:"logo-parc", lt:"parc", t:"Parc Màgic", t2:"de Nadal i Reis", cat:"familia", tag:"Família · Nadal", date:"Del 5 de desembre de 2026 al 4 de gener de 2027", time:"De 15:30 a 22:00", m:"2026-12 2027-01", where:"Jardins de Can Puget, Manlleu", url:ONEBOX_PARC, d:"L'Aventura del Primer Tió i El Campament Reial: circuit teatralitzat, espectacles i màgia de Nadal."},
+    {id:"africana", last:"2027-05-23", logo:"logo-africana", lt:"africana", t:"El dúo de", t2:"La Africana", cat:"sarsuela", tag:"Sarsuela", date:"Dg. 23 de maig de 2027", time:"", m:"2027-05", where:"Casino l'Aliança del Poblenou, Barcelona", url:"", d:"La sarsuela de Manuel Fernández Caballero, amb la companyia de Milnotes."},
+    {id:"corte-ter", last:"2027-09-19", img:"show-corte", logo:"logo-corte", lt:"corte", t:"La Corte", t2:"de Faraón", cat:"sarsuela", tag:"Sarsuela", date:"Dg. 19 de setembre de 2027", time:"", m:"2027-09", where:"Terrassa", url:"", d:"L'opereta bíblica i picant de Vicente Lleó, amb tot l'humor del gènere ínfim."},
+    {id:"corte-pob", last:"2027-09-26", img:"show-corte", logo:"logo-corte", lt:"corte", t:"La Corte", t2:"de Faraón", cat:"sarsuela", tag:"Sarsuela", date:"Dg. 26 de setembre de 2027", time:"", m:"2027-09", where:"Casino l'Aliança del Poblenou, Barcelona", url:"", d:"L'opereta bíblica i picant de Vicente Lleó, amb tot l'humor del gènere ínfim."},
+    {id:"corte-vil", last:"2027-10-03", img:"show-corte", logo:"logo-corte", lt:"corte", t:"La Corte", t2:"de Faraón", cat:"sarsuela", tag:"Sarsuela", date:"Dg. 3 d'octubre de 2027", time:"", m:"2027-10", where:"Vilafranca del Penedès", url:"", d:"L'opereta bíblica i picant de Vicente Lleó, amb tot l'humor del gènere ínfim."}
   ];
+  var d0 = new Date(), TODAY = d0.getFullYear()+"-"+String(d0.getMonth()+1).padStart(2,"0")+"-"+String(d0.getDate()).padStart(2,"0");
+  var SHOWS = ALL.filter(function(s){ return s.last >= TODAY; });
+
+  // hero: les properes funcions de Cançó d'Amor i de Guerra
+  var MES = ["gener","febrer","març","abril","maig","juny","juliol","agost","setembre","octubre","novembre","desembre"];
+  var canco = SHOWS.filter(function(s){ return s.lt==="canco"; }).slice(0,2);
+  if (canco.length) {
+    document.getElementById("heroNext").innerHTML = canco.map(function(s,i){
+      var dt = i===0 ? (canco.length>1 ? "Properes funcions" : "Propera funció") : "&nbsp;";
+      return '<div><dt>'+dt+'</dt><dd>'+s.date.replace(/ de 20\d\d$/,"")+' · '+s.where+'</dd></div>';
+    }).join("");
+  }
 
   var rail = document.getElementById("rail");
   var arrow = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var pin = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="vertical-align:-2px;flex-shrink:0"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
+  function poster(s){
+    var href = s.url || "#cartellera", ext = s.url ? ' target="_blank" rel="noopener"' : '';
+    if(s.logo) return '<a href="'+href+'"'+ext+' class="poster logo lt-'+s.lt+'" aria-hidden="true" tabindex="-1">'+
+          '<img src="img/logos/'+s.logo+'.webp" alt="" loading="lazy" decoding="async">'+
+          '<span class="p-tag">'+s.tag+'</span>'+
+          (s.award ? '<span class="p-award">★ '+s.award+'</span>' : '')+
+        '</a>';
+    return s.img
+      ? '<a href="'+href+'"'+ext+' class="poster photo" aria-hidden="true" tabindex="-1">'+
+          '<img src="img/'+s.img+'.jpg" width="960" height="640" alt="" loading="lazy" decoding="async">'+
+          '<span class="p-tag">'+s.tag+'</span>'+
+          (s.award ? '<span class="p-award">★ '+s.award+'</span>' : '')+
+        '</a>'
+      : '<a href="'+href+'"'+ext+' class="poster art-'+(s.id==="parc"?"parc":"gen")+'" aria-hidden="true" tabindex="-1">'+
+          '<span class="p-tag">'+s.tag+'</span>'+
+          '<div class="p-title">'+s.t+' <i>'+s.t2+'</i></div>'+
+        '</a>';
+  }
   function render(f){
     var list = SHOWS.filter(function(s){ return f==="tots" || s.cat===f; });
     rail.innerHTML = list.map(function(s){
-      return '<article class="card">'+
-        '<a href="#cartellera" class="poster art-'+s.id+'" aria-hidden="true" tabindex="-1">'+
-          '<span class="p-tag">Milnotes</span>'+
-          '<div><div class="p-title">'+s.t+'<br><i>'+s.t2+'</i></div><div class="p-foot">'+s.tag.split(" · ")[0]+'</div></div>'+
-        '</a>'+
+      var buy = s.url
+        ? '<a class="buy" href="'+s.url+'" target="_blank" rel="noopener">Compra entrades '+arrow+'</a>'
+        : '<span class="buy off">Entrades properament</span>';
+      return '<article class="card">'+ poster(s) +
         '<div class="meta">'+
-          '<span class="when'+(s.when?'':' tba')+'">'+(s.when||"Noves dates properament")+'</span>'+
+          '<span class="when">'+s.date+(s.time?' · '+s.time:'')+'</span>'+
+          '<span class="where">'+pin+' '+s.where+'</span>'+
           '<h3>'+s.t+' '+s.t2+'</h3>'+
           '<p>'+s.d+'</p>'+
-          '<div class="links"><a href="#cartellera">'+(s.when?'Entrades':'Avisa\'m')+' '+arrow+'</a><a href="#cartellera">Més info</a></div>'+
+          '<div class="buyrow">'+buy+'</div>'+
         '</div></article>';
     }).join("");
     rail.scrollLeft = 0;
@@ -710,24 +847,39 @@
   document.getElementById("prev").addEventListener("click", function(){ step(-1); });
   document.getElementById("next").addEventListener("click", function(){ step(1); });
 
-  // finder
-  var sel = document.getElementById("f-show");
-  sel.innerHTML = '<option value="">Tots els espectacles</option>' + SHOWS.map(function(s){ return '<option value="'+s.id+'">'+s.t+' '+s.t2+'</option>'; }).join("");
-  sel.value = "canco";
-  document.getElementById("finder").addEventListener("submit", function(e){
-    e.preventDefault();
-    var s = SHOWS.find(function(x){ return x.id===sel.value; });
-    var out = document.getElementById("finderResult");
-    if(s && s.when){ out.innerHTML = "<b>"+s.t+" "+s.t2+"</b> · "+s.when+" · a la web real, aquest botó portaria directament a la compra."; }
-    else if(s){ out.innerHTML = "<b>"+s.t+" "+s.t2+"</b> · encara sense dates anunciades. A la web real, aquí et podries apuntar per rebre l'avís."; }
-    else { out.innerHTML = "Pròxima funció: <b>Cançó d'Amor i de Guerra</b> · Dg. 18 oct · 18:00 · Casino l'Aliança del Poblenou."; }
-  });
-
-  // costume rack
-  var colors = ["#8E1C30","#D3A24C","#2B3C6E","#1F5A4B","#C8506A","#E8DCC4","#5B2A6E","#B3263A","#0F4B55","#7A5420","#D45B77","#2A2030"];
-  var hang = document.getElementById("hangers"), html = "";
-  for (var i=0;i<12;i++){ var h = 58 + ((i*37)%30); html += '<div class="g" style="background:linear-gradient(180deg,'+colors[i]+','+colors[i]+'cc);height:'+h+'%"></div>'; }
-  hang.innerHTML = html;
+  // finder: llista de totes les funcions
+  var sel = document.getElementById("f-show"), selT = document.getElementById("f-type"), selM = document.getElementById("f-month");
+  var names = [];
+  SHOWS.forEach(function(s){ var n = s.t+" "+s.t2; if(names.indexOf(n)<0) names.push(n); });
+  var months = [];
+  SHOWS.forEach(function(s){ s.m.split(" ").forEach(function(m){ if(months.indexOf(m)<0) months.push(m); }); });
+  months.sort();
+  selM.innerHTML = '<option value="">Tots els mesos</option>' + months.map(function(m){
+    var k = +m.slice(5,7)-1; return '<option value="'+m+'">'+MES[k].charAt(0).toUpperCase()+MES[k].slice(1)+' '+m.slice(0,4)+'</option>';
+  }).join("");
+  sel.innerHTML = '<option value="">Tots els espectacles</option>' + names.map(function(n){ return '<option>'+n+'</option>'; }).join("");
+  function thumb(s){
+    if(s.logo) return '<span class="fn-th fn-logo lt-'+s.lt+'"><img src="img/logos/'+s.logo+'.webp" alt="'+s.t+' '+s.t2+'" decoding="async"></span>';
+    return s.img ? '<img class="fn-th" src="img/'+s.img+'.jpg" alt="" loading="lazy" decoding="async">'
+                 : '<span class="fn-th art-'+(s.id==="parc"?"parc":"gen")+'"><i>'+s.t+'</i></span>';
+  }
+  function list(){
+    var n = sel.value, t = selT.value, m = selM.value;
+    var L = SHOWS.filter(function(s){
+      return (!n || (s.t+" "+s.t2)===n) && (t==="tots" || s.cat===t) && (!m || s.m.indexOf(m)>=0);
+    });
+    document.getElementById("fnList").innerHTML = L.length ? L.map(function(s){
+      var buy = s.url ? '<a class="btn btn-gold fn-buy" href="'+s.url+'" target="_blank" rel="noopener">Compra entrades '+arrow+'</a>'
+                      : '<span class="btn fn-buy off">Entrades properament</span>';
+      return '<div class="fn">'+thumb(s)+
+        '<div class="fn-main"><b>'+s.t+' '+s.t2+'</b><span>'+pin+' '+s.where+'</span></div>'+
+        '<div class="fn-date"><b>'+s.date+'</b><span>'+(s.time||'Hora per confirmar')+'</span></div>'+
+        buy +'</div>';
+    }).join("") : '<p class="fn-empty">No hi ha funcions amb aquests filtres.</p>';
+  }
+  [sel, selT, selM].forEach(function(x){ x.addEventListener("change", list); });
+  document.getElementById("finder").addEventListener("submit", function(e){ e.preventDefault(); list(); });
+  list();
 
   // mobile nav
   var burger = document.getElementById("burger"), mnav = document.getElementById("mnav");
